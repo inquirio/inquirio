@@ -1,10 +1,12 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-
+import Login from '../Components/Login/login';
+import { Toolbar, Card, Box } from '@mui/material';
+import Category from '../Components/Category/category';
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <Box className={styles.container}>
       <Head>
         <title>inquirio</title>
         <meta name="description" />
@@ -12,37 +14,40 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <nav className={styles.title}>
-         <h1>Welcome to Inquirio Home Page!</h1>
 
-        </nav>
+        <h1 className={styles.title}>Take Control of Your Career With Inquirio</h1>
+
+        <Toolbar className={styles.toolbar}>
+          <Category />
+          <Login />
+        </Toolbar>
 
         <p className={styles.description}>
-         Start learning by clicking on the {' '} 
-          <code className={styles.code}>Log IN</code>
+          Start learning by clicking the {' '}
+          <code className={styles.code}>Log In</code>
           . First time? Sign up to gain access!
         </p>
 
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
+          <Card href="https://nextjs.org/docs" className={styles.card}>
             <h2>What is Inquirio? &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+            <p>A digital learning platform that gives users access to online courses, certifications etc. Click to find more!</p>
+          </Card>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
+          <Card href="https://nextjs.org/learn" className={styles.card}>
             <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+            <p> Grow and train to be as proficient in your career field as possible in the forseeable future</p>
+          </Card>
 
-          <a
+          <Card
             href="https://github.com/vercel/next.js/tree/canary/examples"
             className={styles.card}
           >
             <h2>Examples &rarr;</h2>
             <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+          </Card>
 
-          <a
+          <Card
             href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
             target="_blank"
             rel="noopener noreferrer"
@@ -52,7 +57,7 @@ export default function Home() {
             <p>
               Get to know the team who made it all happen. Connect with us and feel free to ask any questions!
             </p>
-          </a>
+          </Card>
         </div>
       </main>
 
@@ -69,6 +74,6 @@ export default function Home() {
           Code Fellows
         </a>
       </footer>
-    </div>
+    </Box>
   )
 }
