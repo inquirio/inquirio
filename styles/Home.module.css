@@ -1,6 +1,6 @@
 .container {
   padding: 0 2rem;
-  background-color: rgb(180, 176, 176);
+  background: #99d699 
 }
 
 .main {
@@ -14,6 +14,8 @@
 
 }
 
+
+
 .footer {
   display: flex;
   flex: 1;
@@ -21,7 +23,7 @@
   border-top: 1px solid #eaeaea;
   justify-content: center;
   align-items: center;
-  background-color: rgb(162, 185, 143);
+  background: #99d699 
 }
 
 .footer a {
@@ -39,10 +41,12 @@
 }
 
 .title {
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
   margin: 0;
   line-height: 1.15;
-  font-size: 4rem;
-  background: rgb(50, 134, 50);
+  font-size: 5rem;
+ 
+  
 }
 
 .title,
@@ -50,10 +54,16 @@
   text-align: center;
 }
 
+.toolbar{
+  padding: "theme.spacing.md";
+  
+}
+
 .description {
   margin: 4rem 0;
   line-height: 1.5;
   font-size: 1.5rem;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif 
 }
 
 .code {
@@ -83,6 +93,7 @@
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
   max-width: 300px;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif 
 }
 
 .card:hover,
