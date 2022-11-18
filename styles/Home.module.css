@@ -1,5 +1,6 @@
 .container {
   padding: 0 2rem;
+  background-color: rgb(180, 176, 176);
 }
 
 .main {
@@ -10,6 +11,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
 }
 
 .footer {
@@ -19,6 +21,7 @@
   border-top: 1px solid #eaeaea;
   justify-content: center;
   align-items: center;
+  background-color: rgb(162, 185, 143);
 }
 
 .footer a {
@@ -28,14 +31,10 @@
   flex-grow: 1;
 }
 
-.title a {
-  color: #0070f3;
-  text-decoration: none;
-}
 
-.title a:hover,
-.title a:focus,
-.title a:active {
+.title :hover,
+.title :focus,
+.title :active {
   text-decoration: underline;
 }
 
@@ -43,6 +42,7 @@
   margin: 0;
   line-height: 1.15;
   font-size: 4rem;
+  background: rgb(50, 134, 50);
 }
 
 .title,
