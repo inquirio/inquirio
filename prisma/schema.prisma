@@ -14,20 +14,13 @@ model Course {
   id         String       @id @default(cuid())
   url        String       @unique
   name       String
-  Provider   Provider     @relation(fields: [providerId], references: [id])
-  providerId String
+  provider   String
   category   String?
   price      String?
   language   String?
   image      String?
   Enrollment Enrollment[]
   Review     Review[]
-}
-
-model Provider {
-  id     String   @id @default(cuid())
-  name   String   @unique
-  Course Course[]
 }
 
 model User {
