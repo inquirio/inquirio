@@ -17,7 +17,7 @@ fs.createReadStream(courseraFile, {encoding: 'utf-8'})
 .pipe(csvParser(Array[String]))
 .on('data', (data) => results.push(data))
 .on('end', () => { 
-  const stringifyResults = JSON.stringify(results)
+  const stringifyResults = JSON.stringify(results, null, 2)
   console.log(results);
   fs.writeFile('coursera.json', stringifyResults, (error) => {
     if(error){
