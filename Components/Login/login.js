@@ -13,7 +13,7 @@ const Login = () => {
         </Then>
         <Else>
           <form >
-            <Group style={{ width: '500px' }}>
+            <Group >
               <TextInput
                 name="username"
                 placeholder="Username"
