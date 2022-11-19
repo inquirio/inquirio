@@ -1,6 +1,6 @@
-import prisma from ".";
-import coursera from '../Data/coursera.json';
-import edx from '../Data/edX.json';
+const prisma = require('.');
+const coursera = require('../Data/coursera.json');
+const edx = require('../Data/edX.json');
 
 async function translate() {
   for (let course of coursera) {
@@ -8,7 +8,7 @@ async function translate() {
       url: course['link-href'],
       name: course.name,
       provider: course.provider,
-      category: /topic=(.+)?(?=&)/.exec(course['web-scraper-start-url'])[0].replace('%20', ' '),
+      category: /(?<=topic=)(.+)/.exec(course['web-scraper-start-url'])[0].replaceAll('%20', ' '),
       price: course.price,
       image: course['image-src'],
     }
@@ -25,7 +25,7 @@ async function translate() {
       url: course['link-href'],
       name: course.name,
       provider: course.school,
-      category: /topic=(.+)?(?=&)/.exec(course['web-scraper-start-url'])[0].replace('+', ' '),
+      category: /(?<=subject=)(.+)/.exec(course['web-scraper-start-url'])[0].replaceAll('+', ' '),
       price: course.price,
       image: course['image-src'],
     }
