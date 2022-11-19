@@ -31,8 +31,9 @@ fs.createReadStream(edXFile, {encoding: 'utf-8'})
 .on('data', (data) => edXResults.push(data))
 .on('end', () => { 
   const stringifyResults = JSON.stringify(edXResults, null, 2)
+  const removeSpaces = stringifyResults.replace(/\\n/g, ' ');
   console.log(edXResults);
-  fs.writeFile('edX.json', stringifyResults, (error) => {
+  fs.writeFile('edX.json', removeSpaces, (error) => {
     if(error){
       console.error(error);
     } else {
