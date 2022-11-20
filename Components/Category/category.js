@@ -9,7 +9,7 @@ const Category = () => {
         <Group>
           <TextInput
             name="categories"
-            placeholder="Enter Category"
+            placeholder="Search Categories"
           />
           <Button color="gray.8" type="submit" >Search</Button>
         </Group>
