@@ -14,15 +14,6 @@ const Login = () => {
         <Else>
           <form >
             <Group >
-              <TextInput
-                name="username"
-                placeholder="Username"
-              />
-              <TextInput
-                name="password"
-                type="password"
-                placeholder="Password"
-              />
               <Button color="green" type="submit" >Log In</Button>
             </Group>
           </form>

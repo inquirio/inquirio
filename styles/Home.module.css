@@ -1,5 +1,6 @@
 .container {
   padding: 0 2rem;
+
   background: #99d699 
 }
 
@@ -11,10 +12,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 0px;
 
 }
-
-
 
 .footer {
   display: flex;
@@ -34,19 +34,13 @@
 }
 
 
-.title :hover,
-.title :focus,
-.title :active {
-  text-decoration: underline;
-}
-
 .title {
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
-  margin: 0;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  margin-bottom: 20px;
+  margin-top: 10px;
   line-height: 1.15;
-  font-size: 5rem;
- 
-  
+  font-size: 4rem;
+  color: black;
 }
 
 .title,
@@ -54,16 +48,44 @@
   text-align: center;
 }
 
+/* 
 .toolbar{
-  padding: "theme.spacing.md";
-  
+  border-bottom: 1px solid #eaeaea;
+} */
+
+.toolbar, 
+.linkHome
+{
+  list-style-type: none;
+  text-decoration: none;
+  text-shadow: #111;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 2.5rem;
+  /* display: inline; */
+  text-transform: normal;
+	line-height: 1.3em;
+	color: #596365;
+  text-align: right;
+  margin-right: 50px;
+  margin-left: 50px;
 }
+
+.toolbar, 
+.linkSettings
+{
+  text-decoration: none;
+  color: #596365;
+  text-align: right;
+  margin-right: 300px;
+  margin-left: 60px;
+}
+
 
 .description {
   margin: 4rem 0;
   line-height: 1.5;
   font-size: 1.5rem;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif 
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
 }
 
 .code {
@@ -76,7 +98,7 @@
 }
 
 .grid {
-  display: flex;
+  display:inline-flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
@@ -85,14 +107,12 @@
 
 .card {
   margin: 1rem;
-  padding: 1.5rem;
-  text-align: left;
+  padding: 2rem;
   color: inherit;
   text-decoration: none;
   border: 1px solid #eaeaea;
   border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 300px;
+  max-width: 400px;
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif 
 }
 
