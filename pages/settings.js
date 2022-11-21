@@ -1,5 +1,5 @@
 import styles from '../styles/Home.module.css';
-import settings from '../styles/Settings.module.css'
+// import settings from '../styles/Settings.module.css'
 import { Toolbar, Card, Box } from '@mui/material';
 import { Button, Group, TextInput } from '@mantine/core';
 import Category from '../Components/Category/category';
