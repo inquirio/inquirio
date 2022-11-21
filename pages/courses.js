@@ -5,7 +5,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
+import { CardActionArea, CardActions } from '@mui/material';
 
 export default function Courses() {
 
@@ -18,10 +18,12 @@ export default function Courses() {
       .then((data) => {
         let sliceData = data.slice(0, 10)
         setData(sliceData)
+        console.log(sliceData)
         // setData(data)
       })
   }, [])
 
+  // {course.url}
   return (
 
     <>
@@ -29,7 +31,7 @@ export default function Courses() {
         <Card
           key={`course-${index}`}
           sx={{ maxWidth: 345 }}>
-          <CardActionArea>
+          <CardActionArea href={course.url} >
             <CardMedia
               component="img"
               height="140"
