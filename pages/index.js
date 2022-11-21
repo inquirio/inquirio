@@ -29,7 +29,9 @@ export default function Home() {
 
 
         <Toolbar className={styles.toolbar}>
-          <Link className={styles.linkHome} href="/">Home</Link> &nbsp;&nbsp;&nbsp;<Link className={styles.linkSettings} href="/settings">Settings</Link>
+          <Link className={styles.linkHome} href="/">Home</Link> 
+          <Link className={styles.linkHome} href="/about-us">About-Us</Link> &nbsp;&nbsp;&nbsp;
+          <Link className={styles.linkSettings} href="/settings">Settings</Link> 
           <Login className={styles.header} />
         </Toolbar>
 
