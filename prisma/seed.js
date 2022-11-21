@@ -4,10 +4,10 @@ const courseraFile = './Data/coursera.csv'
 const edxFile = './Data/edX.csv'
 const futureLearnFile = './Data/future-learn.csv'
 const udacityFile = './Data/udacity.csv'
+const udemyFile = './Data/udemy.csv'
 const prisma = require('.');
 
 async function translate() {
-  console.log('hello?')
   const coursera = []
   fs.createReadStream(courseraFile, { encoding: 'utf-8' })
     .pipe(csvParser(Array[String]))
@@ -98,6 +98,30 @@ async function translate() {
       }
     })
 
+    const udemy = []
+    fs.createReadStream(udemyFile, { encoding: 'utf-8' })
+      .pipe(csvParser(Array[String]))
+      .on('data', (data) => udemy.push(data))
+      .on('end', async () => {
+        for (let course of udemy) {
+          price =  course.price === 'null' ? null: /\d+\.\d+/.exec(course.price)[0];
+          const data = {
+            url: course['link-href'],
+            name: course.name,
+            provider: 'Udemy',
+            category: /(?<=courses\/)(.+)(?=\/)/.exec(course['web-scraper-start-url'])[0].replaceAll('-', ' '),
+            image: course['image-src'],
+            price
+          }
+          await prisma.course.upsert({
+            where: { url: data.url },
+            update: data,
+            create: data,
+          })
+          console.log(data.name)
+        }
+      })
+  
 }
 
 translate()
