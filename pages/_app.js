@@ -1,12 +1,19 @@
 import '../styles/globals.css'
+import React from 'react';
+import { UserProvider } from '@auth0/nextjs-auth0';
 import '../styles/transition.css';
-import Transition from '../Components/Transition/transition';
-function MyApp({ Component, pageProps }) {
-  return (
-		<Transition>
-			<Component {...pageProps} />
-		</Transition>
-	);
-}
+import '../styles/Settings.module.css';
 
-export default MyApp
+import Transition from '../Components/Transition/transition';
+
+export default function App({ Component, pageProps }) {
+const { user } = pageProps;
+
+  return (
+    <UserProvider user={ user }>
+      <Transition>
+        <Component {...pageProps} />
+      </Transition>
+    </UserProvider>
+  );
+}
