@@ -1,9 +1,12 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import Link from 'next/link'
+import styles from '../styles/Home.module.css';
+import settings from '../styles/Settings.module.css'
 import Login from '../Components/Login/login';
-import { Toolbar, Card, Box, Link } from '@mui/material';
+import { Toolbar, Card, Box } from '@mui/material';
 import Category from '../Components/Category/category';
+
 export default function Home() {
   return (
     <Box className={styles.container}>
