@@ -15,7 +15,7 @@ const Login = () => {
         <Else>
           <form >
             <Group >
-              <Button color="green" type="submit" >Log In</Button>
+              {/* <Button color="green" type="submit" >Log In</Button>
               <TextInput
                 name="username"
                 placeholder="Username"
@@ -24,7 +24,7 @@ const Login = () => {
                 name="password"
                 type="password"
                 placeholder="Password"
-              />
+              /> */}
 
               <Button color="green" type="submit">
                 <Link
