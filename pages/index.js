@@ -5,24 +5,14 @@ import Link from 'next/link'
 import styles from '../styles/Home.module.css';
 // import settings from '../styles/Settings.module.css'
 import Login from '../Components/Login/login';
-import { Toolbar, Card, Box} from '@mui/material';
+import { Toolbar, Card, Box } from '@mui/material';
 import Category from '../Components/Category/category';
 import { useUser } from '@auth0/nextjs-auth0';
-import {useState, useEffect} from 'react'
+
 
 export default function Home() {
 
   const { user, error, isLoading } = useUser();
-  const [data, setData] = useState(null);
-  console.log('course data ----->', data);
-
-  useEffect(() => {
-    fetch('/api/courses')
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data)
-      })
-  }, [])
 
   return (
     <Box className={styles.container}>

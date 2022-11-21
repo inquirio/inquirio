@@ -4,11 +4,12 @@ import prisma from '../../prisma/index'
 export default async function handler(req, res){
   if(req.method === 'GET'){
     try {
-      const result = await prisma.course.findMany();
-      res.send(result)
+      const allCourses = await prisma.course.findMany();
+      res.send(allCourses)
+      console.log('allCourses -------->', allCourses)
       return {
-        props: {
-          allCourses: result
+        data: {
+          allCourses: allCourses
         }
       }
     } catch(e) {
