@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Course {
+  id         String       @id @default(cuid())
+  url        String       @unique
+  name       String
+  provider   String
+  category   String?
+  price      String?
+  language   String?
+  image      String?
+  Enrollment Enrollment[]
+  Review     Review[]
+}
+
+model User {
+  id         String       @id @default(cuid())
+  name       String
+  email      String       @unique
+  role       Role         @default(USER)
+  Enrollment Enrollment[]
+  Review     Review[]
+}
+
+model Review {
+  id       String @id @default(cuid())
+  Course   Course @relation(fields: [courseId], references: [id])
+  courseId String
+  User     User   @relation(fields: [userId], references: [id])
+  userId   String
+  score    Int
+  content  String
+}
+
+model Enrollment {
+  id       String @id @default(cuid())
+  Course   Course @relation(fields: [courseId], references: [id])
+  courseId String
+  User     User   @relation(fields: [userId], references: [id])
+  userId   String
+  status   Status @default(Queued)
+}
+
+enum Role {
+  USER
+  PROVIDER
+  ADMIN
+}
+
+enum Status {
+  Queued
+  InProgress
+  Completed
+}

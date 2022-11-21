@@ -37,7 +37,6 @@ const Login = () => {
               <Button color="red" type="submit">
                 <Link href="/api/auth/logout" icon="power-off"  >Logout</Link>
               </Button>
-
             </Group>
           </form>
         </Else>
