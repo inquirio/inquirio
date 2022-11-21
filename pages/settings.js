@@ -1,9 +1,15 @@
-import setStyles from '../../styles/settings.css'
-import styles from '../../styles/Home.module.css';
-import { Toolbar, Card, Box, Link, Button } from '@mui/material';
-import Category from '../../Components/Category/category';
+import styles from '../styles/Home.module.css';
+import settings from '../styles/Settings.module.css'
+import { Toolbar, Card, Box } from '@mui/material';
+import { Button, Group, TextInput } from '@mantine/core';
+import Category from '../Components/Category/category';
+import Link from 'next/link';
+import Head from 'next/head';
+import Image from 'next/image';
+import Login from '../Components/Login/login';
 
 export default function Settings() {
+
   return (
     <Box className={styles.container}>
       <Head>
@@ -14,17 +20,16 @@ export default function Settings() {
 
       <main className={styles.main}>
 
-        <Toolbar className={styles.toolbar}>
+        <Toolbar className={styles.toolbarSet}>
           <Link className={styles.linkHome} href="/">Home</Link> &nbsp;&nbsp;&nbsp;<Link className={styles.linkSettings} href="/settings">Settings</Link>
           <Login className={styles.header} />
         </Toolbar>
 
-        <h1 className={styles.title}>Inquirio User Settings</h1>
+        <h1 className={styles.setTitle}>Inquirio User Settings</h1>
         <Category />
 
-
-        <Card>
-          <form>
+        <Card className={styles.setArc}>
+          <form className={styles.setAdd}>
             <Group>
               <TextInput
                 name="categories"
@@ -36,10 +41,10 @@ export default function Settings() {
 
 
           <h3>Archive Inactive Courses</h3>
-
           <Button color="green">Yes</Button>
           <Button color="red">No</Button>
         </Card>
+
 
 
 
@@ -60,8 +65,6 @@ export default function Settings() {
       </footer>
 
     </Box>
-
-
   )
 }
 
