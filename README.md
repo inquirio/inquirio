@@ -30,7 +30,7 @@ To create a local version for development, perform the following steps; do not r
 - Create a `.env` file in the root directory of the cloned repository. Place the following line inside the file, replacing the bracketed values with your Postgres username and password (if necessary).
   
   ```env
-    DATABASE_URL=postgresql://<username>:<password>@localhost:5432/mtgdb?schema=public
+    DATABASE_URL=postgresql://<username>:<password>@localhost:5432/inquirio?schema=public
   ```
 
 - Run the following commands in your terminal from the root of the repository.
