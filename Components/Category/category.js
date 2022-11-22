@@ -1,8 +1,8 @@
 import { FormGroup, TextField, Button } from '@mui/material';
-
-
+import courses from '../../pages/courses'
+import { useState, useEffect } from 'react';
 const Category = () => {
-
+  const [data, setData] = useState([]);
 
   return (
     <>

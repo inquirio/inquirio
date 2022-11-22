@@ -96,12 +96,18 @@ export default function Home() {
 
       <footer className={styles.footer}>
         <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          href="https://www.codefellows.org/"
           target="_blank"
-          rel="noopener noreferrer"
+
         >
+          Made Possible by:
+          <span className={styles.logo}>
+            <Image src="/Code Fellows.png" alt="Code Fellows Logo" width={30} height={30} />
+          </span>
+          Code Fellows
         </a>
       </footer>
+
     </div>
   )
 }

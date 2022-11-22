@@ -6,7 +6,7 @@ import Login from '../Components/Login/login';
 import { Toolbar, Card, Box } from '@mui/material';
 import Category from '../Components/Category/category';
 import { useUser } from '@auth0/nextjs-auth0';
-
+import Courses from './courses';
 
 export default function Home() {
 
@@ -26,15 +26,16 @@ export default function Home() {
         <Toolbar className={styles.toolbar}>
           <Link className={styles.linkHome} href="/">Home</Link> &nbsp;&nbsp;&nbsp;<Link className={styles.linkSettings} href="/settings">Settings</Link>
           <Link className={styles.courses} href="/courses">Courses</Link>
-          <Link className={styles.linkHome} href="/about-us">About-Us</Link> 
+          <Link className={styles.linkHome} href="/about-us">About-Us</Link>
           <Login className={styles.header} />
         </Toolbar>
 
         <h1 className={styles.title}>Take Control of Your Career With Inquirio</h1>
-        <Category />
+
+        <h2 className={styles.titleCat}>Find a Course That Matches Your Interest</h2>
 
         <p className={styles.description}>
-          Start learning by clicking the {' '}
+          Start to track your learning by clicking the {' '}
           <code className={styles.code}>Log In</code>
           . First time? Sign up to gain access!
         </p>
@@ -46,11 +47,16 @@ export default function Home() {
           </Card>
 
           <Card className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p> Grow and train to be as proficient in your career field as possible in the forseeable future</p>
+            <Link href="/courses">
+              <h2>Learn &rarr;</h2>
+              <p> Grow and train to be as proficient in your career field as possible in the forseeable future. Click to find more!</p>
+            </Link>
+
           </Card>
 
-          {/* <Card
+
+
+          <Card
             className={styles.card}
           >
             <a href="/settings">
@@ -68,7 +74,7 @@ export default function Home() {
                 Get to know the team who made it all happen. Connect with us and feel free to ask any questions!
               </p>
             </a>
-          </Card> */}
+          </Card>
         </div>
       </main>
 
