@@ -97,4 +97,16 @@ export default async function handler(req, res) {
       res.status(500).send(e.message)
     }
   }
+
+  if (req.method === 'DELETE') {
+    try {
+      await prisma.enrollment.delete({
+        where: { id: req.body.id }
+      })
+      res.status(200).send('Enrollment Deleted')
+    } catch (e) {
+      console.log(e)
+      res.status(500).send(e.message)
+    }
+  }
 }
