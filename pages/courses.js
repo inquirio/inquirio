@@ -67,18 +67,17 @@ export default function Courses() {
                 className={styles.card}
                 key={`course-${index}`}
                 sx={{
-                  height: '20vw',
+                  height: '15vw',
                 }}
               >
                 <CardActionArea href={course.url} >
                   <CardMedia
                     className={styles.cardImg}
                     component="img"
-                    height="180vw"
                     image={course.image}
                     alt={course.name}
                   />
-                  <CardContent>
+                  <CardContent className={styles.cardBody}>
                     <Typography
                       className={styles.cardHeader}
                       component="div">
