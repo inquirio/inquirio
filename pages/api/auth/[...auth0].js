@@ -1,4 +1,5 @@
 import { handleAuth, handleCallback, session } from '@auth0/nextjs-auth0';
+import { prisma } from '../../../prisma'
 
 const afterCallback = async (req, res, session) => {
   const data = {
@@ -10,7 +11,7 @@ const afterCallback = async (req, res, session) => {
     update: data,
     create: data
   });
-
+  return session;
 }
 
 export default handleAuth({
