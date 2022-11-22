@@ -14,12 +14,10 @@ export default async function handler(req, res) {
           },
         },
       })
-      console.log(enrollment)
-      res.status(200).json({ enrollment });
-
+      res.status(200).send(enrollment);
     } catch (e) {
       console.log(e);
-      res.status(500)
+      res.status(500).send(e.message)
     }
   }
 
@@ -83,16 +81,20 @@ export default async function handler(req, res) {
       res.status(200).send({ totalPages, courses })
     } catch (e) {
       console.log(e);
-      res.status(500)
+      res.status(500).send(e.message)
     }
   }
 
   if (req.method === 'PUT') {
     try {
-      
+      const enrollment = await prisma.enrollment.update({
+        where: { id: req.body.id },
+        data: { status: req.body.status }
+      })
+      res.status(200).send(enrollment)
     } catch (e) {
       console.log(e)
-      res.status(500)
+      res.status(500).send(e.message)
     }
   }
 }
