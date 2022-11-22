@@ -10,7 +10,8 @@ import { CardActionArea, CardActions, Pagination } from '@mui/material';
 import { FormGroup, TextField, Button } from '@mui/material';
 import Box from '@mui/material/Box'
 import styles from '../styles/Courses.module.css';
-import { style } from '@mui/system';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import IconButton from '@mui/material/IconButton';
 
 export default function Courses() {
 
@@ -41,7 +42,7 @@ export default function Courses() {
   return (
 
     <Box className={styles.parentBox}>
-      <FormGroup >
+      <FormGroup className={styles.searchForm}>
         <TextField
           onChange={(e) => setSearch(e.target.value)}
           sx={{ m: 1, width: '25ch' }}
@@ -85,7 +86,7 @@ export default function Courses() {
                 className={styles.card}
                 key={`course-${index}`}
                 sx={{
-                  height: '30vh',
+                  height: '35vh',
                 }}
               >
                 <CardActionArea href={course.url} >
@@ -103,7 +104,7 @@ export default function Courses() {
                     </Typography>
                     <Typography
                       className={styles.cardText}
-                      variant="body2" 
+                      variant="body2"
                       color="text.secondary"
                     >
                       {course.provider}
@@ -112,7 +113,11 @@ export default function Courses() {
 
                   <CardContent className={styles.cardFoot} >
                     <CardActions >
-                      <Button size="small">Enroll</Button>
+                      <IconButton 
+                      className={styles.heartButton}
+                      aria-label="add to favorites">
+                        <FavoriteIcon />
+                      </IconButton>
                     </CardActions>
                   </CardContent>
                 </CardActionArea>

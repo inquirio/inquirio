@@ -9,6 +9,10 @@
   padding: 12%;
 }
 
+.searchForm {
+  display:inline-flex;
+}
+
 .card {
   display: flex;
   flex-shrink: 3;
@@ -32,7 +36,7 @@
 
 .cardBody {
   display: block;
-  max-height: 2vh;
+  height: 3vh;
   align-self: center;
   margin: .25vw;
 
@@ -44,7 +48,13 @@
 }
 
 .cardFoot {
-  max-height: 1vh;
+  height: 1vh;
   align-self: flex-end;
   justify-content: left;
+}
+
+.heartButton {
+  position:absolute;
+  bottom:0;
+  right:0;
 }
