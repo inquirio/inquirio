@@ -1,4 +1,4 @@
-import prisma from '../../prisma/index'
+import {prisma} from '../../prisma/index'
 
 
 export default async function handler(req, res) {
@@ -35,9 +35,10 @@ export default async function handler(req, res) {
       }
 
       let count = await prisma.course.count(dbQuery)
+      let totalPages = Math.ceil(count / limit);
       let courses = await prisma.course.findMany({ ...filter, ...dbQuery });
-      
-      res.status(200).send({ count, courses })
+
+      res.status(200).send({ totalPages, courses })
     } catch (e) {
       console.log(e);
     }
