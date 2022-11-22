@@ -44,18 +44,21 @@ export default function Courses() {
       <FormGroup >
         <TextField
           onChange={(e) => setSearch(e.target.value)}
+          sx={{ m: 1, width: '25ch' }}
           id="filled-search"
           label="By Course"
           type="search"
           variant="filled" />
         <TextField
           onChange={(e) => setCategory(e.target.value)}
+          sx={{ m: 1, width: '25ch' }}
           id="filled-search"
           label="By Category"
           type="search"
           variant="filled" />
         <TextField
           onChange={(e) => setProvider(e.target.value)}
+          sx={{ m: 1, width: '25ch' }}
           id="filled-search"
           label="By Provider"
           type="search"
