@@ -5,29 +5,39 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea, CardActions } from '@mui/material';
+import { CardActionArea, CardActions, Pagination } from '@mui/material';
 
 export default function Courses() {
 
   const [data, setData] = useState([]);
+  const [page, setPage] = useState(1);
+  const [search, setSearch] = useState('');
+  const [category, setCategory] = useState('');
+  const [provider, setProvider] = useState('');
 
-
-  useEffect(() => {
-    fetch('/api/courses')
+  const dbQuery = async () => {
+    const params = new URLSearchParams(Object.entries({
+      page,
+      search,
+      category,
+      provider
+    })).toString()
+    fetch(`/api/courses?${params}`)
       .then((res) => res.json())
       .then((data) => {
-        let sliceData = data.slice(0, 10)
-        setData(sliceData)
-        console.log(sliceData)
-        // setData(data)
+        setData(data)
       })
-  }, [])
+  }
+
+  useEffect(() => {
+    dbQuery()
+  }, [page])
 
   // {course.url}
   return (
 
     <>
-      {data.length && data.map((course, index) => (
+      {data.courses && data.courses.map((course, index) => (
         <Card
           key={`course-${index}`}
           sx={{ maxWidth: 345 }}>
@@ -46,6 +56,8 @@ export default function Courses() {
           </CardActionArea>
         </Card>
       ))}
+      {data.totalPages && <Pagination onChange={(e, value) => setPage(value)} count={data.totalPages} />}
+
     </>
 
   )
