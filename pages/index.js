@@ -1,21 +1,16 @@
-
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css';
-// import settings from '../styles/Settings.module.css'
 import Login from '../Components/Login/login';
-import { Toolbar, Card, Box} from '@mui/material';
+import { Toolbar, Card, Box } from '@mui/material';
 import Category from '../Components/Category/category';
-
 import { useUser } from '@auth0/nextjs-auth0';
+
 
 export default function Home() {
 
   const { user, error, isLoading } = useUser();
-
-  console.log(user);
-
 
   return (
     <Box className={styles.container}>
@@ -30,6 +25,8 @@ export default function Home() {
 
         <Toolbar className={styles.toolbar}>
           <Link className={styles.linkHome} href="/">Home</Link> &nbsp;&nbsp;&nbsp;<Link className={styles.linkSettings} href="/settings">Settings</Link>
+          <Link className={styles.courses} href="/courses">Courses</Link>
+          <Link className={styles.linkHome} href="/about-us">About-Us</Link> 
           <Login className={styles.header} />
         </Toolbar>
 
@@ -53,7 +50,7 @@ export default function Home() {
             <p> Grow and train to be as proficient in your career field as possible in the forseeable future</p>
           </Card>
 
-          <Card
+          {/* <Card
             className={styles.card}
           >
             <a href="/settings">
@@ -71,7 +68,7 @@ export default function Home() {
                 Get to know the team who made it all happen. Connect with us and feel free to ask any questions!
               </p>
             </a>
-          </Card>
+          </Card> */}
         </div>
       </main>
 
