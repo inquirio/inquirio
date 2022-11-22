@@ -1,19 +1,45 @@
 import prisma from '../../prisma/index'
 
 
-export default async function handler(req, res){
-  if(req.method === 'GET'){
+export default async function handler(req, res) {
+  if (req.method === 'GET') {
     try {
-      const allCourses = await prisma.course.findMany();
-      res.send(allCourses)
-      console.log('allCourses -------->', allCourses)
-      return {
-        data: {
-          allCourses: allCourses
+      const { query } = req;
+      let allSearchQueries = [];
+      if (query.search) allSearchQueries.push({
+        name: {
+          search: query.search.split(' ').join(' & ')
+        }
+      })
+      if (query.provider) allSearchQueries.push({
+        provider: {
+          search: query.provider.split(' ').join(' & ')
+        }
+      })
+      if (query.category) allSearchQueries.push({
+        category: {
+          search: query.category.split(' ').join(' & ')
+        }
+      })
+      let page = query.page ? query.page - 1 : 0;
+      let limit = query.limit ? parseInt(query.limit) : 20
+
+      let filter = {
+        take: limit,
+        skip: limit * page,
+      }
+      let dbQuery = {
+        where: {
+          AND: allSearchQueries
         }
       }
-    } catch(e) {
+
+      let count = await prisma.course.count(dbQuery)
+      let courses = await prisma.course.findMany({ ...filter, ...dbQuery });
+      
+      res.status(200).send({ count, courses })
+    } catch (e) {
       console.log(e);
     }
-  }  
+  }
 }
