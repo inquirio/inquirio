@@ -1,0 +1,27 @@
+.parentBox {
+  position:absolute;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 75%;
+  padding: 12%;
+}
+
+.card {
+  color: black;
+  align-content: center;
+  position:relative;
+  flex-wrap: wrap;
+}
+
+.cardHeader {
+  color: black;
+  font-size: 1vw;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif 
+}
+
+.cardText {
+  color: black;
+  font-size: .75vw;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif 
+}

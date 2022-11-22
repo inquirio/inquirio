@@ -9,6 +9,8 @@ import Grid from '@mui/material/Grid';
 import { CardActionArea, Pagination } from '@mui/material';
 import { FormGroup, TextField, Button } from '@mui/material';
 import Box from '@mui/material/Box'
+import styles from '../styles/Courses.module.css';
+import { style } from '@mui/system';
 
 export default function Courses() {
 
@@ -38,12 +40,12 @@ export default function Courses() {
 
   return (
 
-      <Box class="container"
+      <Box className={styles.parentBox}
         sx={{
-          justifyContent: 'center',
-          alignItems: 'center',
-          width: '75%',
-          padding: '10%',
+          // justifyContent: 'center',
+          // alignItems: 'center',
+          // width: '75%',
+          // padding: '10%',
         }}
       >
         <FormGroup >
@@ -69,26 +71,35 @@ export default function Courses() {
                 item xs={2} sm={4} md={4}
               >
                 <Card
+                  className={styles.card}
                   key={`course-${index}`}
                   sx={{
-                    height: '20vw',
+                    height: '15vw',
                   }}
                 >
                   <CardActionArea href={course.url} >
                     <CardMedia
+                      className={styles.cardImg}
                       component="img"
-                      height="200vw"
+                      height="150vw"
                       image={course.image}
                       alt={course.name}
                     />
                     <CardContent>
-                      <Typography gutterBottom variant="h6" component="div">
+                      <Typography
+                      className={styles.cardHeader}
+                      gutterBottom 
+                      component="div">
                         {course.name}
                       </Typography>
-                      <Typography component="div">
+                      <Typography 
+                      className={styles.cardText} 
+                      component="div"
+                      >
                         {course.provider}
                       </Typography>
                     </CardContent>
+                    <Button>Enroll</Button>
                   </CardActionArea>
                 </Card>
               </Grid>
