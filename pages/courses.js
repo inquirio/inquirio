@@ -6,7 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import { CardActionArea, Pagination } from '@mui/material';
+import { CardActionArea, CardActions, Pagination } from '@mui/material';
 import { FormGroup, TextField, Button } from '@mui/material';
 import Box from '@mui/material/Box'
 import styles from '../styles/Courses.module.css';
@@ -40,73 +40,70 @@ export default function Courses() {
 
   return (
 
-      <Box className={styles.parentBox}
+    <Box className={styles.parentBox}>
+      <FormGroup >
+        <TextField onChange={(e) => setSearch(e.target.value)} id="filled-basic" label="By Course" variant="filled" />
+        <TextField onChange={(e) => setCategory(e.target.value)} id="filled-basic" label="By Category" variant="filled" />
+        <TextField onChange={(e) => setProvider(e.target.value)} id="filled-basic" label="By Provider" variant="filled" />
+        <Button onClick={dbQuery} >Search</Button>
+      </FormGroup>
+      <Grid
+        container spacing={{ xs: 2, md: 3 }}
+        columns={{ xs: 12, sm: 16, md: 20 }}
         sx={{
-          // justifyContent: 'center',
-          // alignItems: 'center',
-          // width: '75%',
-          // padding: '10%',
+          margin: '10%',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '50%'
         }}
       >
-        <FormGroup >
-          <TextField onChange={(e) => setSearch(e.target.value)} id="filled-basic" label="By Course" variant="filled" />
-          <TextField onChange={(e) => setCategory(e.target.value)} id="filled-basic" label="By Category" variant="filled" />
-          <TextField onChange={(e) => setProvider(e.target.value)} id="filled-basic" label="By Provider" variant="filled" />
-          <Button onClick={dbQuery} >Search</Button>
-        </FormGroup>
-        <Grid
-          container spacing={{ xs: 2, md: 3 }}
-          columns={{ xs: 12, sm: 16, md: 20 }}
-          sx={{
-            margin: '10%',
-            justifyContent: 'center',
-            alignItems: 'center',
-            width: '50%'
-          }}
-        >
-          {
-            data.courses && data.courses.map((course, index) => (
-              <Grid
-                component="div"
-                item xs={2} sm={4} md={4}
+        {
+          data.courses && data.courses.map((course, index) => (
+            <Grid
+              component="div"
+              item xs={2} sm={4} md={4}
+            >
+              <Card
+                className={styles.card}
+                key={`course-${index}`}
+                sx={{
+                  height: '20vw',
+                }}
               >
-                <Card
-                  className={styles.card}
-                  key={`course-${index}`}
-                  sx={{
-                    height: '15vw',
-                  }}
-                >
-                  <CardActionArea href={course.url} >
-                    <CardMedia
-                      className={styles.cardImg}
-                      component="img"
-                      height="150vw"
-                      image={course.image}
-                      alt={course.name}
-                    />
-                    <CardContent>
-                      <Typography
+                <CardActionArea href={course.url} >
+                  <CardMedia
+                    className={styles.cardImg}
+                    component="img"
+                    height="180vw"
+                    image={course.image}
+                    alt={course.name}
+                  />
+                  <CardContent>
+                    <Typography
                       className={styles.cardHeader}
-                      gutterBottom 
                       component="div">
-                        {course.name}
-                      </Typography>
-                      <Typography 
-                      className={styles.cardText} 
+                      {course.name}
+                    </Typography>
+                    <Typography
+                      className={styles.cardText}
                       component="div"
-                      >
-                        {course.provider}
-                      </Typography>
-                    </CardContent>
-                    <Button>Enroll</Button>
-                  </CardActionArea>
-                </Card>
-              </Grid>
-            ))}
-          {data.totalPages && <Pagination onChange={(e, value) => setPage(value)} count={data.totalPages} />}
-        </Grid>
-      </Box>
+                    >
+                      {course.provider}
+                    </Typography>
+                  </CardContent>
+
+                  <CardContent className={styles.cardFoot} >
+                    <CardActions >
+                      <Button size="small">Enroll</Button>
+                    </CardActions>
+                  </CardContent>                  
+                </CardActionArea>
+              </Card>
+            </Grid>
+          ))}
+        {data.totalPages && <Pagination onChange={(e, value) => setPage(value)} count={data.totalPages} />}
+      </Grid>
+    </Box>
 
 
   )
