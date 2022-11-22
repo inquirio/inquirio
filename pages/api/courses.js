@@ -41,6 +41,7 @@ export default async function handler(req, res) {
       res.status(200).send({ totalPages, courses })
     } catch (e) {
       console.log(e);
+      res.status(500)
     }
   }
 }
