@@ -5,7 +5,8 @@ const edxFile = './Data/edX.csv'
 const futureLearnFile = './Data/future-learn.csv'
 const udacityFile = './Data/udacity.csv'
 const udemyFile = './Data/udemy.csv'
-const prisma = require('.');
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient
 
 async function translate() {
   const coursera = []
@@ -108,7 +109,7 @@ async function translate() {
           const data = {
             url: course['link-href'],
             name: course.name,
-            provider: 'Udemy',
+            provider: course.provider,
             category: /(?<=courses\/)(.+)(?=\/)/.exec(course['web-scraper-start-url'])[0].replaceAll('-', ' '),
             image: course['image-src'],
             price

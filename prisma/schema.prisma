@@ -50,6 +50,8 @@ model Enrollment {
   User     User   @relation(fields: [userId], references: [id])
   userId   String
   status   Status @default(Queued)
+
+  @@unique([courseId, userId])
 }
 
 enum Role {
