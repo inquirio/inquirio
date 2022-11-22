@@ -1,4 +1,4 @@
-import prisma from '../../prisma/index'
+import {prisma} from '../../prisma/index'
 
 export default async function handler(req, res) {
   if(req.method === 'POST'){
