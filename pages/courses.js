@@ -1,11 +1,10 @@
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { CardActionArea, CardActions, Pagination } from '@mui/material';
+import { Box, Card, CardActions, CardActionArea, CardContent, CardMedia, Grid, IconButton, Pagination, Typography } from '@mui/material';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import SearchIcon from '@mui/icons-material/Search';
 import { useRouter } from 'next/router';
 import getCourses from '../lib/courses';
 import Search from '../Components/Search/Search';
+import styles from '../styles/Courses.module.css';
 
 export async function getServerSideProps({ query }) {
   let data = await getCourses(query)
@@ -21,35 +20,80 @@ export default function Courses({ data }) {
   }
 
   return (
-    <>
+    <Box className={styles.parentBox}>
       <Search enrollment={false} />
-      {data.courses && data.courses.map((course, index) => (
-        <Card
-          key={`course-${index}`}
-          sx={{ maxWidth: 345 }}>
-          <CardActionArea href={course.url} >
-            <CardMedia
-              component="img"
-              height="140"
-              image={course.image}
-              alt={course.name}
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                {course.name}
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-        </Card>
-      ))}
-      {data.totalPages && <Pagination
-        onChange={(e, value) => setPage(value)}
-        page={parseInt(data.query.page)}
-        count={data.totalPages}
-        variant="outlined"
-      />}
+      <Grid
+        container spacing={{ xs: 2, md: 3 }}
+        columns={{ xs: 12, sm: 16, md: 20 }}
+        sx={{
+          margin: '10%',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '50%'
+        }}
+      >
+        {
+          data.courses && data.courses.map((course, index) => (
+            <Grid
+              key={`course-${index}`}
+              component="div"
+              item xs={2} sm={4} md={4}
+            >
+              <Card
+                className={styles.card}
+                sx={{
+                  height: '35vh',
+                }}
+              >
+                <CardActionArea href={course.url} >
+                  <CardMedia
+                    className={styles.cardImg}
+                    component="img"
+                    image={course.image}
+                    alt={course.name}
+                  />
+                  <CardContent className={styles.cardBody}>
+                    <Typography
+                      className={styles.cardHeader}
+                      component="div">
+                      {course.name}
+                    </Typography>
+                    <Typography
+                      className={styles.cardText}
+                      variant="body2"
+                      color="text.secondary"
+                    >
+                      {course.provider}
+                    </Typography>
+                  </CardContent>
 
-    </>
-
+                  <CardContent className={styles.cardFoot} >
+                    <CardActions >
+                      <IconButton
+                        className={styles.heartButton}
+                        aria-label="add to favorites">
+                        <FavoriteIcon />
+                      </IconButton>
+                    </CardActions>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            </Grid>
+          ))}
+        {data.totalPages &&
+          <Pagination
+            onChange={(e, value) => setPage(value)}
+            page={parseInt(data.query.page)}
+            count={data.totalPages}
+            className={styles.Pagination}
+            size="large"
+            color="primary"
+            variant="outlined"
+            shape="rounded"
+          />}
+      </Grid>
+    </Box>
   )
 }
+
+

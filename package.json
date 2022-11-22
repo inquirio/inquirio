@@ -17,6 +17,7 @@
     "@emotion/styled": "^11.10.5",
     "@mantine/core": "^5.8.0",
     "@mantine/hooks": "^5.8.0",
+    "@mui/icons-material": "^5.10.15",
     "@mui/material": "^5.10.14",
     "@mui/styled-engine-sc": "^5.10.14",
     "@prisma/client": "^4.6.1",
