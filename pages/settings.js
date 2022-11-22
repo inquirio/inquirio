@@ -1,7 +1,7 @@
 import styles from '../styles/Home.module.css';
 // import settings from '../styles/Settings.module.css'
-import { Toolbar, Card, Box } from '@mui/material';
-import { Button, Group, TextInput } from '@mantine/core';
+import { Toolbar, Card, Box, TextField, FormGroup, Button } from '@mui/material';
+
 import Category from '../Components/Category/category';
 import Link from 'next/link';
 import Head from 'next/head';
@@ -20,8 +20,10 @@ export default function Settings() {
 
       <main className={styles.main}>
 
-        <Toolbar className={styles.toolbarSet}>
+      <Toolbar className={styles.toolbar}>
           <Link className={styles.linkHome} href="/">Home</Link> &nbsp;&nbsp;&nbsp;<Link className={styles.linkSettings} href="/settings">Settings</Link>
+          <Link className={styles.courses} href="/courses">Courses</Link>
+          <Link className={styles.linkHome} href="/about-us">About-Us</Link> 
           <Login className={styles.header} />
         </Toolbar>
 
@@ -30,19 +32,17 @@ export default function Settings() {
 
         <Card className={styles.setArc}>
           <form className={styles.setAdd}>
-            <Group>
-              <TextInput
-                name="categories"
-                placeholder="Add New Category"
-              />
-              <Button color="gray.8" type="submit" >Add Category</Button>
-            </Group>
+            <FormGroup>
+            <TextField id="filled-basic" label="Add Category" variant="filled" />
+             
+              <Button>Add Category</Button>
+            </FormGroup>
           </form>
 
 
           <h3>Archive Inactive Courses</h3>
-          <Button color="green">Yes</Button>
-          <Button color="red">No</Button>
+          <Button >Yes</Button>
+          <Button >No</Button>
         </Card>
 
 

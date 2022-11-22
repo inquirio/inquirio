@@ -1,4 +1,5 @@
-import { Button, Group, TextInput } from '@mantine/core';
+import { FormGroup, TextField, Button } from '@mui/material';
+
 
 const Category = () => {
 
@@ -6,13 +7,10 @@ const Category = () => {
   return (
     <>
       <form>
-        <Group>
-          <TextInput
-            name="categories"
-            placeholder="Search Categories"
-          />
-          <Button color="gray.8" type="submit" >Search</Button>
-        </Group>
+        <FormGroup>
+        <TextField id="filled-basic" label="Search Category" variant="filled" />
+          <Button>Search</Button>
+        </FormGroup>
       </form>
     </>
   )

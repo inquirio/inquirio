@@ -1,8 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
-const Transition = ({ children }) => {
-  return children;
-};
+
 
 
 const variants = {
@@ -46,4 +44,4 @@ const TransitionEffect1 = ({ children }) => {
   );
 };
 
-export {TransitionEffect1, Transition};
+export default TransitionEffect1;
