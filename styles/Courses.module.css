@@ -10,6 +10,9 @@
 }
 
 .searchForm {
+  align-self: center;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 3.5vh;
   display:inline-flex;
   width: 50%;
