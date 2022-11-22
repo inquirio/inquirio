@@ -1,42 +1,28 @@
-
-import { useState, useEffect } from 'react'
-
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea, CardActions, Pagination } from '@mui/material';
+import { useRouter } from 'next/router';
+import getCourses from '../lib/courses';
+import Search from '../Components/Search/Search';
 
-export default function Courses() {
+export async function getServerSideProps({ query }) {
+  let data = await getCourses(query)
+  data.query = query
+  return { props: { data } }
+}
 
-  const [data, setData] = useState([]);
-  const [page, setPage] = useState(1);
-  const [search, setSearch] = useState('');
-  const [category, setCategory] = useState('');
-  const [provider, setProvider] = useState('');
-
-  const dbQuery = async () => {
-    const params = new URLSearchParams(Object.entries({
-      page,
-      search,
-      category,
-      provider
-    })).toString()
-    fetch(`/api/courses?${params}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data)
-      })
+export default function Courses({ data }) {
+  const router = useRouter();
+  const setPage = value => {
+    const params = new URLSearchParams(Object.entries({ ...data.query, page: value })).toString()
+    router.push(`http://localhost:3000/courses?${params}`)
   }
 
-  useEffect(() => {
-    dbQuery()
-  }, [page])
-
-  // {course.url}
   return (
-
     <>
+      <Search enrollment={false} />
       {data.courses && data.courses.map((course, index) => (
         <Card
           key={`course-${index}`}
@@ -56,7 +42,12 @@ export default function Courses() {
           </CardActionArea>
         </Card>
       ))}
-      {data.totalPages && <Pagination onChange={(e, value) => setPage(value)} count={data.totalPages} />}
+      {data.totalPages && <Pagination
+        onChange={(e, value) => setPage(value)}
+        page={parseInt(data.query.page)}
+        count={data.totalPages}
+        variant="outlined"
+      />}
 
     </>
 
