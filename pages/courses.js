@@ -12,6 +12,7 @@ import Box from '@mui/material/Box'
 import styles from '../styles/Courses.module.css';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import IconButton from '@mui/material/IconButton';
+import SearchIcon from '@mui/icons-material/Search';
 
 export default function Courses() {
 
@@ -42,29 +43,36 @@ export default function Courses() {
   return (
 
     <Box className={styles.parentBox}>
-      <FormGroup className={styles.searchForm}>
+      <FormGroup
+        className={styles.searchForm}
+      >
         <TextField
           onChange={(e) => setSearch(e.target.value)}
-          sx={{ m: 1, width: '25ch' }}
+          fullWidth sx={{ m: 1 }}
           id="filled-search"
           label="By Course"
           type="search"
           variant="filled" />
         <TextField
           onChange={(e) => setCategory(e.target.value)}
-          sx={{ m: 1, width: '25ch' }}
+          fullWidth sx={{ m: 1 }}
           id="filled-search"
           label="By Category"
           type="search"
           variant="filled" />
         <TextField
           onChange={(e) => setProvider(e.target.value)}
-          sx={{ m: 1, width: '25ch' }}
+          fullWidth sx={{ m: 1 }}
           id="filled-search"
           label="By Provider"
           type="search"
           variant="filled" />
-        <Button onClick={dbQuery} >Search</Button>
+        <Button
+          className={styles.formButton}
+          onClick={dbQuery}
+          variant="outlined"
+          startIcon={<SearchIcon />}
+        > Search</Button>
       </FormGroup>
       <Grid
         container spacing={{ xs: 2, md: 3 }}
@@ -113,9 +121,9 @@ export default function Courses() {
 
                   <CardContent className={styles.cardFoot} >
                     <CardActions >
-                      <IconButton 
-                      className={styles.heartButton}
-                      aria-label="add to favorites">
+                      <IconButton
+                        className={styles.heartButton}
+                        aria-label="add to favorites">
                         <FavoriteIcon />
                       </IconButton>
                     </CardActions>
@@ -124,7 +132,16 @@ export default function Courses() {
               </Card>
             </Grid>
           ))}
-        {data.totalPages && <Pagination onChange={(e, value) => setPage(value)} count={data.totalPages} />}
+        {data.totalPages &&
+          <Pagination
+            className={styles.Pagination}
+            size="large"
+            color="primary"
+            variant="outlined" 
+            shape="rounded"
+            onChange={(e, value) => setPage(value)}
+            count={data.totalPages}
+          />}
       </Grid>
     </Box>
 
