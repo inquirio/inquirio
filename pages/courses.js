@@ -42,9 +42,24 @@ export default function Courses() {
 
     <Box className={styles.parentBox}>
       <FormGroup >
-        <TextField onChange={(e) => setSearch(e.target.value)} id="filled-basic" label="By Course" variant="filled" />
-        <TextField onChange={(e) => setCategory(e.target.value)} id="filled-basic" label="By Category" variant="filled" />
-        <TextField onChange={(e) => setProvider(e.target.value)} id="filled-basic" label="By Provider" variant="filled" />
+        <TextField
+          onChange={(e) => setSearch(e.target.value)}
+          id="filled-search"
+          label="By Course"
+          type="search"
+          variant="filled" />
+        <TextField
+          onChange={(e) => setCategory(e.target.value)}
+          id="filled-search"
+          label="By Category"
+          type="search"
+          variant="filled" />
+        <TextField
+          onChange={(e) => setProvider(e.target.value)}
+          id="filled-search"
+          label="By Provider"
+          type="search"
+          variant="filled" />
         <Button onClick={dbQuery} >Search</Button>
       </FormGroup>
       <Grid
@@ -67,7 +82,7 @@ export default function Courses() {
                 className={styles.card}
                 key={`course-${index}`}
                 sx={{
-                  height: '15vw',
+                  height: '30vh',
                 }}
               >
                 <CardActionArea href={course.url} >
@@ -85,7 +100,8 @@ export default function Courses() {
                     </Typography>
                     <Typography
                       className={styles.cardText}
-                      component="div"
+                      variant="body2" 
+                      color="text.secondary"
                     >
                       {course.provider}
                     </Typography>
@@ -95,7 +111,7 @@ export default function Courses() {
                     <CardActions >
                       <Button size="small">Enroll</Button>
                     </CardActions>
-                  </CardContent>                  
+                  </CardContent>
                 </CardActionArea>
               </Card>
             </Grid>
