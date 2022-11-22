@@ -6,11 +6,12 @@ const afterCallback = async (req, res, session) => {
     name: session.user.name,
     email: session.user.email,
   }
-  await prisma.User.upsert({
+  let dbUser = await prisma.User.upsert({
     where: { email: session.user.email },
     update: data,
     create: data
   });
+  session.user.dbid = dbUser.id;
   return session;
 }
 
