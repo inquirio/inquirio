@@ -1,7 +1,7 @@
 import { If, Then, Else } from 'react-if';
-import { Button, Group, TextInput } from '@mantine/core';
+import { Button, FormGroup, } from '@mui/material';
 import Link from 'next/link';
-// import LoginButton from './loginButton';
+
 
 const Login = () => {
 
@@ -14,7 +14,7 @@ const Login = () => {
         </Then>
         <Else>
           <form >
-            <Group >
+            <FormGroup >
               {/* <Button color="green" type="submit" >Log In</Button>
               <TextInput
                 name="username"
@@ -26,7 +26,7 @@ const Login = () => {
                 placeholder="Password"
               /> */}
 
-              <Button color="green" type="submit">
+              <Button>
                 <Link
                   href="/api/auth/login"
                   className="btn btn-primary btn-margin"
@@ -35,10 +35,10 @@ const Login = () => {
                   Log in
                 </Link>
               </Button>
-              <Button color="red" type="submit">
+              <Button>
                 <Link href="/api/auth/logout" icon="power-off"  >Logout</Link>
               </Button>
-            </Group>
+            </FormGroup>
           </form>
         </Else>
       </If>
