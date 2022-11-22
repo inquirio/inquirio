@@ -132,7 +132,16 @@ export default function Courses() {
               </Card>
             </Grid>
           ))}
-        {data.totalPages && <Pagination onChange={(e, value) => setPage(value)} count={data.totalPages} />}
+        {data.totalPages &&
+          <Pagination
+            className={styles.Pagination}
+            size="large"
+            color="primary"
+            variant="outlined" 
+            shape="rounded"
+            onChange={(e, value) => setPage(value)}
+            count={data.totalPages}
+          />}
       </Grid>
     </Box>
 
