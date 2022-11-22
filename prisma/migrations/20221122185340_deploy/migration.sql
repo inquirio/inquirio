@@ -55,6 +55,9 @@ CREATE UNIQUE INDEX "Course_url_key" ON "Course"("url");
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
+-- CreateIndex
+CREATE UNIQUE INDEX "Enrollment_courseId_userId_key" ON "Enrollment"("courseId", "userId");
+
 -- AddForeignKey
 ALTER TABLE "Review" ADD CONSTRAINT "Review_courseId_fkey" FOREIGN KEY ("courseId") REFERENCES "Course"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
