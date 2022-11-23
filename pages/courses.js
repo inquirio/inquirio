@@ -7,6 +7,7 @@ import Search from '../Components/Search/Search';
 import styles from '../styles/Courses.module.css';
 import ExitToAppSharpIcon from '@mui/icons-material/ExitToAppSharp';
 import Navbar from '../Components/Navbar/navbar';
+import nextConfig from '../next.config'
 
 export async function getServerSideProps({ query }) {
   if (!query.page) query.page = 1
@@ -21,7 +22,7 @@ export default withPageAuthRequired(function Courses({ data }) {
   const router = useRouter();
   const setPage = value => {
     const params = new URLSearchParams(Object.entries({ ...data.query, page: value })).toString()
-    router.push(`http://localhost:3000/courses?${params}`)
+    router.push(`${nextConfig.host}/courses?${params}`)
   }
 
   const enroll = async (courseId) => {
@@ -37,7 +38,7 @@ export default withPageAuthRequired(function Courses({ data }) {
   return (
 
     <>
-    <Navbar/>
+      <Navbar />
       <Box className={styles.parentBox}>
         <Search enrollment={false} />
         <Grid
@@ -53,11 +54,11 @@ export default withPageAuthRequired(function Courses({ data }) {
           {
             data.courses && data.courses.map((course, index) => (
               <Grid
+                key={`course-${index}`}
                 component="div"
                 item xs={2} sm={4} md={4}
               >
                 <Card
-                  key={`course-${index}`}
                   className={styles.card}
                   sx={{ height: '40vh' }}
                 >
@@ -104,17 +105,17 @@ export default withPageAuthRequired(function Courses({ data }) {
             ))}
           {data.totalPages &&
             <Pagination
-            onChange={(e, value) => setPage(value)}
-            page={parseInt(data.query.page)}
-            count={parseInt(data.totalPages)}
-            className={styles.Pagination}
-            size="large"
-            color="primary"
-            variant="outlined"
-            shape="rounded"
+              onChange={(e, value) => setPage(value)}
+              page={parseInt(data.query.page)}
+              count={parseInt(data.totalPages)}
+              className={styles.Pagination}
+              size="large"
+              color="primary"
+              variant="outlined"
+              shape="rounded"
             />}
-            </Grid>
-          </Box>
+        </Grid>
+      </Box>
     </>
   )
 })
