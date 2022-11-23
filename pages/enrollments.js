@@ -1,5 +1,6 @@
 import { Box, Card, CardHeader, CardActions, CardContent, CardMedia, Grid, IconButton, Pagination, Typography } from '@mui/material';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
+import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 import { useRouter } from 'next/router';
 import Search from '../Components/Search/Search';
 import styles from '../styles/Courses.module.css';
@@ -112,7 +113,7 @@ export default withPageAuthRequired(function Enrollments({ data }) {
                           onClick={() => updateStatus(enrollment.id, 'InProgress')}
                           className={styles.queueButton}
                           aria-label="add to favorites">
-                          <ExitToAppSharpIcon />
+                          <SkipNextIcon />
                         </IconButton> :
                         <IconButton
                           onClick={() => updateStatus(enrollment.id, 'Completed')}
@@ -121,6 +122,12 @@ export default withPageAuthRequired(function Enrollments({ data }) {
                           <CastForEducationIcon />
                         </IconButton>
                     }
+                    <IconButton
+                      onClick={() => removeEnrollment(enrollment.id)}
+                      className={styles.deleteButton}
+                      aria-label="add to favorites">
+                      <DeleteForeverOutlinedIcon />
+                    </IconButton>
                   </CardActions>
                 </Card>
               </Grid>
