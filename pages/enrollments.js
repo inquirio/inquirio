@@ -1,11 +1,11 @@
 import { Box, Card, CardActions, CardActionArea, CardContent, CardMedia, Grid, IconButton, Pagination, Typography } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import SearchIcon from '@mui/icons-material/Search';
 import { useRouter } from 'next/router';
 import Search from '../Components/Search/Search';
 import styles from '../styles/Courses.module.css';
 import { getEnrollment } from '../lib/enrollment';
 import { getSession, withPageAuthRequired } from '@auth0/nextjs-auth0';
+
 
 export const getServerSideProps = withPageAuthRequired({
   async getServerSideProps(ctx) {

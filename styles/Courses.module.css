@@ -41,22 +41,42 @@
   justify-content: space-evenly;
   align-content: center;
   position:relative;
+  flex-direction: column;
 }
 
 .card:hover
 {
-        -webkit-transform: scale(1);
-        -ms-transform: scale(1.1);
-        transform: scale(1.1);
+   -webkit-transform: scale(1);
+   -ms-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.cardHeader {
+  width: 75%;
+  height: 1.5 vh;
+  display: block;
+  /* padding-right: 5px; */
+}
+
+
+.exitButton {
+  position:absolute;
+  height: 1.5 vh;
+  top:0;
+  right:0;
+}
+
+.exitButton:hover
+{
+  color: #10dc7a;
 }
 
 .cardImg {
   height: 18vh;
   display: block;
-  align-self: flex-start;
 }
 
-.cardHeader {
+.cardContent {
   display: block;
   color: black;
   font-size: 1.5vh;
@@ -65,19 +85,18 @@
 
 .cardBody {
   display: block;
-  height: 3vh;
+  height: 5vh;
   align-self: center;
   margin: .25vw;
 
 }
 
 .cardText {
-  font-size: 1.25vh;
+  font-size: 1vh;
   font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
 }
 
 .cardFoot {
-  height: 1vh;
   align-self: flex-end;
   justify-content: left;
 }
@@ -90,7 +109,7 @@
 
 .heartButton:hover
 {
-  color: #dc8787;
+  color: #f19c9c;
 }
 
 .Pagination {
