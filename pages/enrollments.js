@@ -133,6 +133,7 @@ export default withPageAuthRequired(function Enrollments({ data }) {
                 </Card>
               </Grid>
             ))}
+            </Grid>
           {data.totalPages &&
             <Pagination
               onChange={(e, value) => setPage(value)}
@@ -144,7 +145,6 @@ export default withPageAuthRequired(function Enrollments({ data }) {
               variant="outlined"
               shape="rounded"
             />}
-        </Grid>
       </Box>
     </>
   )
