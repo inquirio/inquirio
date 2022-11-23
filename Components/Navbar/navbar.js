@@ -145,6 +145,14 @@ function ResponsiveAppBar() {
               >
                   COURSES
                 </Button>
+                <Button
+                
+                href="/about-us"
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                ABOUT US
+              </Button>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
