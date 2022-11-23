@@ -1,12 +1,12 @@
 import { Box, Card, CardActions, CardHeader, CardContent, CardMedia, Grid, IconButton, Pagination, Typography } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0';
 import { useRouter } from 'next/router';
 import getCourses from '../lib/courses';
 import Search from '../Components/Search/Search';
 import styles from '../styles/Courses.module.css';
 import ExitToAppSharpIcon from '@mui/icons-material/ExitToAppSharp';
-// import { addEnrollment } from '../lib/enrollment';
-import { useUser } from '@auth0/nextjs-auth0';
+
 
 export async function getServerSideProps({ query }) {
   if (!query.page) query.page = 1
@@ -15,12 +15,23 @@ export async function getServerSideProps({ query }) {
   return { props: { data } }
 }
 
-export default function Courses({ data }) {
-  const {user} = useUser();
+export default withPageAuthRequired(function Courses({ data }) {
+  const { user } = useUser();
+
   const router = useRouter();
   const setPage = value => {
     const params = new URLSearchParams(Object.entries({ ...data.query, page: value })).toString()
     router.push(`http://localhost:3000/courses?${params}`)
+  }
+
+  const enroll = async (courseId) => {
+    const res = await fetch('/api/enrollment', {
+      method: 'POST',
+      body: JSON.stringify({
+        courseId,
+        userId: user.dbid
+      })
+    })
   }
 
   return (
@@ -78,7 +89,7 @@ export default function Courses({ data }) {
 
                   <CardActions className={styles.cardFoot} >
                     <IconButton
-                      // onClick={() => addEnrollment(course.id, user.dbid)}
+                      onClick={() => addEnrollment(course.id)}
                       className={styles.heartButton}
                       aria-label="add to favorites">
                       <FavoriteIcon />
@@ -102,6 +113,4 @@ export default function Courses({ data }) {
       </Grid>
     </Box>
   )
-}
-
-
+})
