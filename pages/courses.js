@@ -7,6 +7,7 @@ import Search from '../Components/Search/Search';
 import styles from '../styles/Courses.module.css';
 
 export async function getServerSideProps({ query }) {
+  if (!query.page) query.page = 1
   let data = await getCourses(query)
   data.query = query
   return { props: { data } }
@@ -84,7 +85,7 @@ export default function Courses({ data }) {
           <Pagination
             onChange={(e, value) => setPage(value)}
             page={parseInt(data.query.page)}
-            count={data.totalPages}
+            count={parseInt(data.totalPages)}
             className={styles.Pagination}
             size="large"
             color="primary"
