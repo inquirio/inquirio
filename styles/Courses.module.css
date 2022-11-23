@@ -18,7 +18,7 @@
   margin-bottom: 3.5vh;
   display:inline-flex;
   width: 50%;
-} 
+}
 
 .formButton {
   align-self: center;
@@ -99,6 +99,7 @@
 .cardFoot {
   align-self: flex-end;
   justify-content: left;
+  align-content: space-between;
 }
 
 .heartButton {
@@ -108,14 +109,23 @@
 }
 
 .queueButton {
-  position:absolute;
   bottom:0;
-  right:0;
+  left:0;
 }
 
 .queueButton:hover {
 color: rgb(28, 155, 206);
 }
+
+.deleteButton {
+  bottom:0;
+  right:0;
+}
+
+.deleteButton:hover {
+  color: red;
+}
+
 
 
 .heartButton:hover
