@@ -3,7 +3,7 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css';
 import Navbar from '../Components/Navbar/navbar';
 import { Card, Box } from '@mui/material';
-import Category from '../Components/Category/category';
+import Search from '../Components/Search/Search';
 import { useUser } from '@auth0/nextjs-auth0';
 
 
@@ -22,7 +22,7 @@ export default function Home() {
       <main className={styles.main}>
         <Navbar />
         <h1 className={styles.title}>Take Control of Your Career With Inquirio</h1>
-        <Category />
+        <Search enrollment={false}/>
 
         <p className={styles.description}>
           Start learning by clicking the {' '}
