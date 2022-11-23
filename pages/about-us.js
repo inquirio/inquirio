@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { Toolbar } from '@mui/material';
+import { Toolbar, Card, Typography } from '@mui/material';
 import Navbar from '../Components/Navbar/navbar';
 import Image from 'next/image'
 import styles from '../styles/About.module.css'
@@ -30,94 +30,95 @@ export default function Home() {
 
         <div className={styles.grid}>
 
-          <a href="https://www.linkedin.com/in/branden-ge/" className={styles.card}>
+          <Card href="https://www.linkedin.com/in/branden-ge/" className={styles.card}>
             <h2 className={styles.title} >Branden Ge</h2 >
             <h3><li>Software Developer</li></h3>
             <Image
               src='/Branden.jpg' alt='gene' width={250} height={250} />
-            <p>
+            <ul>
               <li>Marine Corps veteran</li>
               <li>University of Michigan BBA</li>
               <li>Tech startup experience</li>
               <li>Writer</li>
               <li>Family man</li>
               <li>Interests: web development and game development</li>
-            </p>
-          </a>
+            </ul>
+          </Card>
 
-          <a href="https://www.linkedin.com/in/brandomoki/" className={styles.card}>
+          <Card href="https://www.linkedin.com/in/brandomoki/" className={styles.card}>
             <h2 className={styles.title} >Brandon Pitts</h2>
             <h3><li>Software Developer</li></h3>
             <Image
               src='/Brandon.jpg' alt='gene' width={250} height={250} />
-            <p>
+            <ul>
               <li>US Army Veteran, Paratrooper </li>
               <li>Background in Management and Building maintenance</li>
               <li>Interest: Blockchain and web3 </li>
-            </p>
-          </a>
+            </ul>
+          </Card>
 
-          <a href="https://www.linkedin.com/in/dsfrey/" className={styles.card}>
+          <Card href="https://www.linkedin.com/in/dsfrey/" className={styles.card}>
             <h2 className={styles.title} >Daniel Frey</h2>
             <h3><li>Software Developer</li></h3>
             <Image
               src='/Daniel.jpg' alt='gene' width={250} height={250} />
-            <p>
+            <ul>
               <li>Graduated from Iowa State with a B.S. in Materials Engineering</li>
               <li>Experience in everything from retail to warehouses to church ministry</li>
               <li>Full Stack Javascript developer</li>
               <li>Always ready to learn new and interesting things</li>
-            </p>
-          </a>
+            </ul>
+          </Card>
 
-          <a href="https://www.linkedin.com/in/keelen-fisher-b63766148/" className={styles.card}>
+          <Card href="https://www.linkedin.com/in/keelen-fisher-b63766148/" className={styles.card}>
             <h2 className={styles.title} >Keelen Fisher</h2>
             <h3><li>Software Developer</li></h3>
             <Image
               src='/Keelen.jpg' alt='gene' width={250} height={250} />
-            <p>
+            <ul>
               <li>Born and raised in Houston Texas. </li>
               <li>Undergraduate for Computer Science.</li>
               <li>Started with Code Fellows Software Developer program to learn so much more about Advanced Full Stack development in JavaScript </li>
               <li>Goal: establish projects for communities big and small, while also creating my own. </li>
-            </p>
-          </a>
+            </ul>
+          </Card>
 
-          <a href="https://www.linkedin.com/in/stephnihill/" className={styles.card}>
+          <Card href="https://www.linkedin.com/in/stephnihill/" className={styles.card}>
             <h2 className={styles.title} >Stephanie Hill</h2>
             <h3><li>Software Developer</li></h3>
             <Image
               src='/Stephanie.jpg' alt='gene' width={250} height={250} />
-            <p>
+            <ul>
               <li>Coming from a career in seasonal hospitality</li>
               <li>Worked with a diverse range of individuals & traveled extensively </li>
               <li>Consistently been able to find commonalities that bring people together.</li>
               <li>Looking for a position that strives for an inclusive design methodology and creates software environments that can be meaningfully used by as many people as possible.</li>
-            </p>
-          </a>
+            </ul>
+          </Card>
 
-          <a href="https://www.linkedin.com/in/hsp20tim/" className={styles.card}>
+          <Card href="https://www.linkedin.com/in/hsp20tim/" className={styles.card}>
             <h2 className={styles.title} >Timothee Odushina</h2>
             <h3><li>Software Developer</li></h3>
             <Image
               src='/Timothee.jpg' alt='gene' width={250} height={250} />
-            <p>
+            <ul>
               <li>US Army Veteran with Active Secret Security Clearance</li>
               <li>Background in Aviation & Ground Logistics, Technical Supply Management, and Construction Management</li>
               <li>Passionate about learning new skills and consistently  improving myself</li>
               <li>Very excited for becoming a Software Developer</li>
-            </p>
-          </a>
+            </ul>
+          </Card>
         </div>
       </main>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-        </a>
+      <footer className={styles.footer} align="right">
+          <span className={styles.logo}>
+            <Image src="/logo6.png" alt="Code Fellows Logo" width={45} height={45} />
+          </span>
+          <Typography >
+        &copy; 2022 Inquirio
+        </Typography>
+      
       </footer>
     </div>
   )

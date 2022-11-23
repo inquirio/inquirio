@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { Box, Card, CardActions, CardHeader, CardContent, CardMedia, Grid, IconButton, Pagination, Typography } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0';
@@ -38,6 +39,12 @@ export default withPageAuthRequired(function Courses({ data }) {
   return (
 
     <>
+      <Head>
+        <title>inquirio</title>
+        <meta name="description" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <Navbar />
       <Box className={styles.parentBox}>
         <Search enrollment={false} />
