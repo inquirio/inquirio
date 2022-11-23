@@ -33,9 +33,6 @@ export default function Home() {
           <p className={styles.description}>
             First time? Start learning by signing up to gain access!
           </p>}
-       
-        
-        <Search enrollment={false}/>
 
         <div className={styles.grid}>
           <Card className={styles.card}>
