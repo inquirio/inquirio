@@ -1,12 +1,12 @@
-import { Box, Card, CardActions, CardActionArea, CardContent, CardMedia, Grid, IconButton, Pagination, Typography } from '@mui/material';
+import { Box, Card, CardActions, CardHeader, CardContent, CardMedia, Grid, IconButton, Pagination, Typography } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import SearchIcon from '@mui/icons-material/Search';
+import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0';
 import { useRouter } from 'next/router';
 import getCourses from '../lib/courses';
 import Search from '../Components/Search/Search';
 import styles from '../styles/Courses.module.css';
-import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0';
-import { Flex } from '@mantine/core';
+import ExitToAppSharpIcon from '@mui/icons-material/ExitToAppSharp';
+
 
 export async function getServerSideProps({ query }) {
   if (!query.page) query.page = 1
@@ -17,6 +17,7 @@ export async function getServerSideProps({ query }) {
 
 export default withPageAuthRequired(function Courses({ data }) {
   const { user } = useUser();
+
   const router = useRouter();
   const setPage = value => {
     const params = new URLSearchParams(Object.entries({ ...data.query, page: value })).toString()
@@ -49,50 +50,52 @@ export default withPageAuthRequired(function Courses({ data }) {
         {
           data.courses && data.courses.map((course, index) => (
             <Grid
-              key={`course-${index}`}
-              component="div"
-              item xs={2} sm={4} md={4}
+            component="div"
+            item xs={2} sm={4} md={4}
             >
               <Card
+                key={`course-${index}`}
                 className={styles.card}
-                sx={{
-                  height: '35vh',
-                }}
+                sx={{height: '35vh'}}
               >
-                <CardActionArea href={course.url} >
-                  <CardMedia
-                    className={styles.cardImg}
-                    component="img"
-                    image={course.image}
-                    alt={course.name}
-                  />
-                  <CardContent className={styles.cardBody}>
-                    <Typography
-                      className={styles.cardHeader}
-                      component="div">
-                      {course.name}
-                    </Typography>
-                    <Typography
-                      className={styles.cardText}
-                      variant="body2"
-                      color="text.secondary"
-                    >
-                      {course.provider}
-                    </Typography>
-                  </CardContent>
 
-                  <CardContent className={styles.cardFoot} >
-                    <CardActions >
-                      <IconButton
-                        className={styles.heartButton}
-                        aria-label="add to favorites"
-                        onClick={() => enroll(course.id)}
-                      >
-                        <FavoriteIcon />
-                      </IconButton>
-                    </CardActions>
-                  </CardContent>
-                </CardActionArea>
+                <CardHeader 
+                className={styles.cardHeader}
+                action={
+                    <IconButton 
+                    className={styles.exitButton}
+                    href={course.url}  >                    
+                      <ExitToAppSharpIcon />
+                    </IconButton>
+                  }
+                  subheader={course.name}
+                />
+
+                <CardMedia
+                  className={styles.cardImg}
+                  component="img"
+                  image={course.image}
+                  alt={course.name}
+                />
+
+                <CardContent className={styles.cardBody}>
+                  <Typography
+                    className={styles.cardContent}
+                    component="div">
+                      {course.provider}
+                    
+                  </Typography>
+                </CardContent>
+
+                  <CardActions className={styles.cardFoot} >
+                    <IconButton
+                      onClick={() => addEnrollment(course.id)}
+                      className={styles.heartButton}
+                      aria-label="add to favorites">
+                      <FavoriteIcon />
+                    </IconButton>
+                  </CardActions>
+
               </Card>
             </Grid>
           ))}
