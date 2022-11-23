@@ -10,6 +10,7 @@ import ExitToAppSharpIcon from '@mui/icons-material/ExitToAppSharp';
 import CastForEducationIcon from '@mui/icons-material/CastForEducation';
 import Navbar from '../Components/Navbar/navbar';
 import { useUser } from '@auth0/nextjs-auth0';
+import nextConfig from '../next.config'
 
 
 export const getServerSideProps = withPageAuthRequired({
@@ -30,7 +31,7 @@ export default withPageAuthRequired(function Enrollments({ data }) {
   const router = useRouter();
   const setPage = value => {
     const params = new URLSearchParams(Object.entries({ ...data.query, page: value })).toString()
-    router.push(`http://localhost:3000/enrollments?${params}`)
+    router.push(`${nextConfig.host}/enrollments?${params}`)
   }
   const updateStatus = async (id, status) => {
     console.log(id, status);

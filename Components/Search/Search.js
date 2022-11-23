@@ -2,6 +2,7 @@ import { FormGroup, TextField, Button } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
+import nextConfig from '../../next.config'
 
 const Search = ({ enrollment }) => {
   const router = useRouter();
@@ -16,8 +17,8 @@ const Search = ({ enrollment }) => {
     if (search) query.unshift(['search', search])
     const params = new URLSearchParams(query).toString()
     enrollment
-      ? router.push(`http://localhost:3000/enrollments?${params}`)
-      : router.push(`http://localhost:3000/courses?${params}`)
+      ? router.push(`${nextConfig.host}/enrollments?${params}`)
+      : router.push(`${nextConfig.host}/courses?${params}`)
   }
 
   return (
