@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css';
-import Login from '../Components/loginNavbar/login';
 import Navbar from '../Components/Navbar/navbar';
 import { Card, Box } from '@mui/material';
 import Category from '../Components/Category/category';
@@ -11,7 +10,7 @@ import { useUser } from '@auth0/nextjs-auth0';
 export default function Home() {
 
   const { user, error, isLoading } = useUser();
- 
+
   return (
     <Box className={styles.container}>
       <Head>
@@ -21,12 +20,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-
-       {/* {user
-       ?  */}
-       <Navbar />
-        {/* : <Login />} */}
-
+        <Navbar />
         <h1 className={styles.title}>Take Control of Your Career With Inquirio</h1>
         <Category />
 
