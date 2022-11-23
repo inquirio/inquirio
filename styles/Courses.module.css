@@ -6,10 +6,12 @@
   justify-content: center;
   align-items: center;
   width: 75%;
-  padding: 12%;
+  padding: 5%;
+  padding-left: 12%;
+  padding-right: 12%;
 }
 
-.searchForm {
+/* .searchForm {
   align-self: center;
   align-items: center;
   justify-content: center;
@@ -27,7 +29,7 @@
   border-color: whitesmoke;
   color: whitesmoke;
   background-color: rgb(48, 60, 76);
-}
+} */
 
 .formButton:hover {
   background: rgb(14, 14, 18);
@@ -52,15 +54,14 @@
 }
 
 .cardHeader {
-  width: 75%;
-  height: 1.5 vh;
-  display: block;
+  width: 90%;
+  height: 5vh;
+  display: flex;
+  padding-top: .25vw;
 }
 
-
 .exitButton {
-  position:absolute;
-  height: 1.5 vh;
+  position: absolute;
   top:0;
   right:0;
 }
@@ -84,7 +85,7 @@
 
 .cardBody {
   display: block;
-  height: 5vh;
+  height: 4vh;
   align-self: center;
   margin: .25vw;
 
@@ -98,6 +99,7 @@
 .cardFoot {
   align-self: flex-end;
   justify-content: left;
+  align-content: space-between;
 }
 
 .heartButton {
@@ -107,11 +109,24 @@
 }
 
 .queueButton {
-  position:absolute;
+  bottom:0;
+  left:0;
+}
+
+.queueButton:hover {
+color: rgb(28, 155, 206);
+}
+
+.deleteButton {
   bottom:0;
   right:0;
-  color: rgb(28, 155, 206);
 }
+
+.deleteButton:hover {
+  color: red;
+}
+
+
 
 .heartButton:hover
 {
