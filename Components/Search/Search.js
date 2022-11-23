@@ -1,7 +1,8 @@
 import { FormGroup, TextField, Button } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-// import styles from '../styles/Courses.module.css';
+import styles from '../../styles/Courses.module.css';
+import SearchIcon from '@mui/icons-material/Search';
 
 const Search = ({ enrollment }) => {
   const router = useRouter();
@@ -21,7 +22,7 @@ const Search = ({ enrollment }) => {
   }
 
   return (
-    <FormGroup>
+    <FormGroup className={styles.searchForm}>
       <TextField
         value={search}
         onChange={(e) => setSearch(e.target.value)}
@@ -46,7 +47,10 @@ const Search = ({ enrollment }) => {
         label="By Provider"
         type="search"
         variant="filled" />
-      <Button onClick={newSearch} >Search</Button>
+      <Button 
+      onClick={newSearch}
+      startIcon={<SearchIcon />}
+      >Search</Button>
     </FormGroup>
   )
 }

@@ -20,9 +20,18 @@
 
 .formButton {
   align-self: center;
+  padding: 1rem;
   margin-top: .75vw;
-  width: 6vw;
+  width: 8vw;
   height: 2vw;
+  border-color: whitesmoke;
+  color: whitesmoke;
+  background-color: rgb(48, 60, 76);
+}
+
+.formButton:hover {
+  background: rgb(14, 14, 18);
+  border: none;
 }
 
 .card {
@@ -33,6 +42,14 @@
   align-content: center;
   position:relative;
 }
+
+.card:hover
+{
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1.1);
+        transform: scale(1.1);
+}
+
 .cardImg {
   height: 18vh;
   display: block;
@@ -69,6 +86,11 @@
   position:absolute;
   bottom:0;
   right:0;
+}
+
+.heartButton:hover
+{
+  color: #dc8787;
 }
 
 .Pagination {
