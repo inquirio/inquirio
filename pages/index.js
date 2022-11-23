@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css';
 import Navbar from '../Components/Navbar/navbar';
-import { Card, Box } from '@mui/material';
+import { Card, Box, Typography } from '@mui/material';
 import Search from '../Components/Search/Search';
 import { useUser } from '@auth0/nextjs-auth0';
 
@@ -48,18 +48,14 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://www.codefellows.org/"
-          target="_blank"
-
-        >
-          Made Possible by:
+      <footer className={styles.footer} align="right">
           <span className={styles.logo}>
-            <Image src="/Code Fellows.png" alt="Code Fellows Logo" width={30} height={30} />
+            <Image src="/logo6.png" alt="Code Fellows Logo" width={45} height={45} />
           </span>
-          Code Fellows
-        </a>
+          <Typography >
+        &copy; 2022 Inquirio
+        </Typography>
+      
       </footer>
     </Box >
   )
