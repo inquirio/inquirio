@@ -6,7 +6,6 @@ import getCourses from '../lib/courses';
 import Search from '../Components/Search/Search';
 import styles from '../styles/Courses.module.css';
 import ExitToAppSharpIcon from '@mui/icons-material/ExitToAppSharp';
-import Login from '../Components/loginNavbar/login';
 import Navbar from '../Components/Navbar/navbar';
 
 export async function getServerSideProps({ query }) {
@@ -38,9 +37,7 @@ export default withPageAuthRequired(function Courses({ data }) {
   return (
 
     <>
-      {user
-        ? <Navbar />
-        : <Login />}
+    <Navbar/>
       <Box className={styles.parentBox}>
         <Search enrollment={false} />
         <Grid

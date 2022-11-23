@@ -7,7 +7,6 @@ import { getEnrollment } from '../lib/enrollment';
 import { getSession, withPageAuthRequired } from '@auth0/nextjs-auth0';
 import ExitToAppSharpIcon from '@mui/icons-material/ExitToAppSharp';
 import CastForEducationIcon from '@mui/icons-material/CastForEducation';
-import Login from '../Components/loginNavbar/login';
 import Navbar from '../Components/Navbar/navbar';
 import { useUser } from '@auth0/nextjs-auth0';
 
@@ -52,9 +51,9 @@ export default withPageAuthRequired(function Enrollments({ data }) {
 
   return (
     <>
-      {user
-        ? <Navbar />
-        : <Login />}
+
+      <Navbar />
+
       <Box className={styles.parentBox}>
         <Search enrollment={true} />
         <Grid

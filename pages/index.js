@@ -1,10 +1,9 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css';
-import Login from '../Components/loginNavbar/login';
+import Search from '@mui/icons-material/Search';
 import Navbar from '../Components/Navbar/navbar';
 import { Card, Box } from '@mui/material';
-import Category from '../Components/Category/category';
 import { useUser } from '@auth0/nextjs-auth0';
 
 
@@ -19,15 +18,13 @@ export default function Home() {
         <meta name="description" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      {user
-        ? <Navbar />
-        : <Login />}
-
+      <Navbar />
       <main className={styles.main}>
 
         <h1 className={styles.title}>Inquirio</h1>
         <h2 className={styles.h2}>Take Control of Your Career</h2>
+
+        <Search enrollment={false}/>
 
         {user
           ? <p className={styles.description}>Welcome {user.name}!</p> :
@@ -35,7 +32,6 @@ export default function Home() {
             First time? Start learning by signing up to gain access!
           </p>
         }
-
 
         <div className={styles.grid}>
           <Card className={styles.card}>
