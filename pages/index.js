@@ -1,10 +1,9 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import Link from 'next/link'
 import styles from '../styles/Home.module.css';
-import Login from '../Components/Login/login';
-import { Toolbar, Card, Box } from '@mui/material';
-import Category from '../Components/Category/category';
+import Navbar from '../Components/Navbar/navbar';
+import { Card, Box } from '@mui/material';
+import Search from '../Components/Search/Search';
 import { useUser } from '@auth0/nextjs-auth0';
 
 
@@ -20,24 +19,20 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <Navbar />
+
       <main className={styles.main}>
 
+        <h1 className={styles.title}>Inquirio</h1>
+        <h2 className={styles.h2}>Take Control of Your Career</h2>
 
-        <Toolbar className={styles.toolbar}>
-          <Link className={styles.linkHome} href="/">Home</Link> &nbsp;&nbsp;&nbsp;<Link className={styles.linkSettings} href="/settings">Settings</Link>
-          <Link className={styles.courses} href="/courses">Courses</Link>
-          <Link className={styles.linkHome} href="/about-us">About-Us</Link> 
-          <Login className={styles.header} />
-        </Toolbar>
+        <Search enrollment={false}/>
 
-        <h1 className={styles.title}>Take Control of Your Career With Inquirio</h1>
-        <Category />
-
-        <p className={styles.description}>
-          Start learning by clicking the {' '}
-          <code className={styles.code}>Log In</code>
-          . First time? Sign up to gain access!
-        </p>
+        {user
+          ? <p className={styles.description}>Welcome {user.name}!</p> :
+          <p className={styles.description}>
+            First time? Start learning by signing up to gain access!
+          </p>}
 
         <div className={styles.grid}>
           <Card className={styles.card}>
@@ -50,25 +45,6 @@ export default function Home() {
             <p> Grow and train to be as proficient in your career field as possible in the forseeable future</p>
           </Card>
 
-          {/* <Card
-            className={styles.card}
-          >
-            <a href="/settings">
-              <h2>Settings &rarr;</h2>
-              <p>You can enable notifications to inform you whenever there is a new course added to the application.</p>
-            </a>
-          </Card>
-
-          <Card
-            className={styles.card}
-          >
-            <a href="/about">
-              <h2>About Us &rarr;</h2>
-              <p>
-                Get to know the team who made it all happen. Connect with us and feel free to ask any questions!
-              </p>
-            </a>
-          </Card> */}
         </div>
       </main>
 
