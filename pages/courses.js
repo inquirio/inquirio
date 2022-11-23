@@ -6,7 +6,7 @@ import getCourses from '../lib/courses';
 import Search from '../Components/Search/Search';
 import styles from '../styles/Courses.module.css';
 import ExitToAppSharpIcon from '@mui/icons-material/ExitToAppSharp';
-
+import Navbar from '../Components/Navbar/navbar';
 
 export async function getServerSideProps({ query }) {
   if (!query.page) query.page = 1
@@ -35,72 +35,75 @@ export default withPageAuthRequired(function Courses({ data }) {
   }
 
   return (
-    <Box className={styles.parentBox}>
-      <Search enrollment={false} />
-      <Grid
-        container spacing={{ xs: 2, md: 3 }}
-        columns={{ xs: 12, sm: 16, md: 20 }}
-        sx={{
-          margin: '10%',
-          justifyContent: 'center',
-          alignItems: 'center',
-          width: '50%'
-        }}
-      >
-        {
-          data.courses && data.courses.map((course, index) => (
-            <Grid
-            component="div"
-            item xs={2} sm={4} md={4}
-            >
-              <Card
-                key={`course-${index}`}
-                className={styles.card}
-                sx={{height: '35vh'}}
+
+    <>
+    <Navbar/>
+      <Box className={styles.parentBox}>
+        <Search enrollment={false} />
+        <Grid
+          container spacing={{ xs: 2, md: 3 }}
+          columns={{ xs: 12, sm: 16, md: 20 }}
+          sx={{
+            margin: '10%',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '50%'
+          }}
+        >
+          {
+            data.courses && data.courses.map((course, index) => (
+              <Grid
+                component="div"
+                item xs={2} sm={4} md={4}
               >
+                <Card
+                  key={`course-${index}`}
+                  className={styles.card}
+                  sx={{ height: '40vh' }}
+                >
 
-                <CardHeader 
-                className={styles.cardHeader}
-                action={
-                    <IconButton 
-                    className={styles.exitButton}
-                    href={course.url}  >                    
-                      <ExitToAppSharpIcon />
-                    </IconButton>
-                  }
-                  subheader={course.name}
-                />
+                  <CardHeader
+                    className={styles.cardHeader}
+                    action={
+                      <IconButton
+                        className={styles.exitButton}
+                        href={course.url}  >
+                        <ExitToAppSharpIcon />
+                      </IconButton>
+                    }
+                    subheader={course.name}
+                  />
 
-                <CardMedia
-                  className={styles.cardImg}
-                  component="img"
-                  image={course.image}
-                  alt={course.name}
-                />
+                  <CardMedia
+                    className={styles.cardImg}
+                    component="img"
+                    image={course.image}
+                    alt={course.name}
+                  />
 
-                <CardContent className={styles.cardBody}>
-                  <Typography
-                    className={styles.cardContent}
-                    component="div">
+                  <CardContent className={styles.cardBody}>
+                    <Typography
+                      className={styles.cardContent}
+                      component="div">
                       {course.provider}
-                    
-                  </Typography>
-                </CardContent>
+
+                    </Typography>
+                  </CardContent>
 
                   <CardActions className={styles.cardFoot} >
                     <IconButton
-                      onClick={() => addEnrollment(course.id)}
+                      onClick={() => enroll(course.id)}
                       className={styles.heartButton}
                       aria-label="add to favorites">
                       <FavoriteIcon />
                     </IconButton>
                   </CardActions>
 
-              </Card>
-            </Grid>
-          ))}
-        {data.totalPages &&
-          <Pagination
+                </Card>
+              </Grid>
+            ))}
+          {data.totalPages &&
+            <Pagination
             onChange={(e, value) => setPage(value)}
             page={parseInt(data.query.page)}
             count={parseInt(data.totalPages)}
@@ -109,8 +112,9 @@ export default withPageAuthRequired(function Courses({ data }) {
             color="primary"
             variant="outlined"
             shape="rounded"
-          />}
-      </Grid>
-    </Box>
+            />}
+            </Grid>
+          </Box>
+    </>
   )
 })
