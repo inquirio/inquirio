@@ -161,14 +161,7 @@ function ResponsiveAppBar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            {/* <Button variant="contained" color="primary">
-              <Link
-                href="/api/auth/login"
-                
-              >
-                Log in
-              </Link>
-            </Button> */}
+           
             <Button
               
               href="/api/auth/login"

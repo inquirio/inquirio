@@ -22,9 +22,10 @@ export default function Home() {
 
       <main className={styles.main}>
 
-       {user
-       ? <Navbar />
-       : <Login />}
+       {/* {user
+       ?  */}
+       <Navbar />
+        {/* : <Login />} */}
 
         <h1 className={styles.title}>Take Control of Your Career With Inquirio</h1>
         <Category />
