@@ -55,7 +55,6 @@
   width: 75%;
   height: 1.5 vh;
   display: block;
-  /* padding-right: 5px; */
 }
 
 
@@ -105,6 +104,13 @@
   position:absolute;
   bottom:0;
   right:0;
+}
+
+.queueButton {
+  position:absolute;
+  bottom:0;
+  right:0;
+  color: rgb(28, 155, 206);
 }
 
 .heartButton:hover

@@ -1,9 +1,9 @@
-import { Box, Card, CardActions, CardActionArea, CardContent, CardMedia, Grid, IconButton, Pagination, Typography } from '@mui/material';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import { Box, Card, CardActions, CardContent, CardMedia, Grid, IconButton, Pagination, Typography } from '@mui/material';
+import SkipNextIcon from '@mui/icons-material/SkipNext';
 import { useRouter } from 'next/router';
 import Search from '../Components/Search/Search';
 import styles from '../styles/Courses.module.css';
-import { getEnrollment } from '../lib/enrollment';
+import { getEnrollment, updateEnrollment } from '../lib/enrollment';
 import { getSession, withPageAuthRequired } from '@auth0/nextjs-auth0';
 
 
@@ -36,51 +36,55 @@ export default function Enrollments({ data }) {
           width: '50%'
         }}
       >
-        {
-          data.courses && data.courses.map((enrollment, index) => (
+       {
+          data.courses && data.courses.map((course, index) => (
             <Grid
-              key={`course-${index}`}
-              component="div"
-              item xs={2} sm={4} md={4}
+            component="div"
+            item xs={2} sm={4} md={4}
             >
               <Card
+                key={`course-${index}`}
                 className={styles.card}
-                sx={{
-                  height: '35vh',
-                }}
+                sx={{height: '35vh'}}
               >
-                <CardActionArea href={enrollment.Course.url} >
-                  <CardMedia
-                    className={styles.cardImg}
-                    component="img"
-                    image={enrollment.Course.image}
-                    alt={enrollment.Course.name}
-                  />
-                  <CardContent className={styles.cardBody}>
-                    <Typography
-                      className={styles.cardHeader}
-                      component="div">
-                      {enrollment.Course.name}
-                    </Typography>
-                    <Typography
-                      className={styles.cardText}
-                      variant="body2"
-                      color="text.secondary"
-                    >
-                      {enrollment.Course.provider}
-                    </Typography>
-                  </CardContent>
 
-                  <CardContent className={styles.cardFoot} >
-                    <CardActions >
-                      <IconButton
-                        className={styles.heartButton}
-                        aria-label="add to favorites">
-                        <FavoriteIcon />
-                      </IconButton>
-                    </CardActions>
-                  </CardContent>
-                </CardActionArea>
+                <CardHeader 
+                className={styles.cardHeader}
+                action={
+                    <IconButton 
+                    className={styles.exitButton}
+                    href={course.url}  >                    
+                      <ExitToAppSharpIcon />
+                    </IconButton>
+                  }
+                  subheader={course.name}
+                />
+
+                <CardMedia
+                  className={styles.cardImg}
+                  component="img"
+                  image={course.image}
+                  alt={course.name}
+                />
+
+                <CardContent className={styles.cardBody}>
+                  <Typography
+                    className={styles.cardContent}
+                    component="div">
+                      {course.provider}
+                    
+                  </Typography>
+                </CardContent>
+
+                  <CardActions className={styles.cardFoot} >
+                    <IconButton
+                      onClick={() => updateEnrollment(course.id)}
+                      className={styles.queueButton}
+                      aria-label="add to favorites">
+                      <SkipNextIcon />
+                    </IconButton>
+                  </CardActions>
+
               </Card>
             </Grid>
           ))}
