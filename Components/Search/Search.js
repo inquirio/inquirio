@@ -17,8 +17,8 @@ const Search = ({ enrollment }) => {
     if (search) query.unshift(['search', search])
     const params = new URLSearchParams(query).toString()
     enrollment
-      ? router.push(`${nextConfig.host}/enrollments?${params}`)
-      : router.push(`${nextConfig.host}/courses?${params}`)
+      ? router.push(`${nextConfig.env.host}/enrollments?${params}`)
+      : router.push(`${nextConfig.env.host}/courses?${params}`)
   }
 
   return (

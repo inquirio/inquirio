@@ -6,13 +6,12 @@ import { Card, Box, Typography } from '@mui/material';
 import Search from '../Components/Search/Search';
 import { useUser } from '@auth0/nextjs-auth0';
 
-
 export default function Home() {
 
   const { user, error, isLoading } = useUser();
 
   return (
-    <Box className={styles.container}>
+    <Box className={styles.container} data-testid="box">
       <Head>
         <title>inquirio</title>
         <meta name="description" />
@@ -21,7 +20,7 @@ export default function Home() {
 
       <Navbar />
 
-      <main className={styles.main}>
+      <main className={styles.main} data-testid="main">
 
         <h1 className={styles.title}>Inquirio</h1>
         <h2 className={styles.h2}>Take Control of Your Career</h2>
