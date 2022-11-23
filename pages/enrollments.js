@@ -1,31 +1,32 @@
-import { Box, Card, CardActions, CardHeader, CardContent, CardMedia, Grid, IconButton, Pagination, Typography } from '@mui/material';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import { Box, Card, CardActions, CardContent, CardMedia, Grid, IconButton, Pagination, Typography } from '@mui/material';
+import SkipNextIcon from '@mui/icons-material/SkipNext';
 import { useRouter } from 'next/router';
-import getCourses from '../lib/courses';
 import Search from '../Components/Search/Search';
 import styles from '../styles/Courses.module.css';
-import ExitToAppSharpIcon from '@mui/icons-material/ExitToAppSharp';
-// import { addEnrollment } from '../lib/enrollment';
-import { useUser } from '@auth0/nextjs-auth0';
+import { getEnrollment} from '../lib/enrollment';
+import { getSession, withPageAuthRequired } from '@auth0/nextjs-auth0';
 
-export async function getServerSideProps({ query }) {
-  if (!query.page) query.page = 1
-  let data = await getCourses(query)
-  data.query = query
-  return { props: { data } }
-}
 
-export default function Courses({ data }) {
-  const {user} = useUser();
+export const getServerSideProps = withPageAuthRequired({
+  async getServerSideProps(ctx) {
+    const { user } = getSession(ctx.req, ctx.res)
+    let data = await getEnrollment({ ...ctx.query, userId: user.dbid })
+    data.query = ctx.query
+    if (!data.query.page) data.query.page = 1
+    return { props: { data } }
+  }
+})
+
+export default function Enrollments({ data }) {
   const router = useRouter();
   const setPage = value => {
     const params = new URLSearchParams(Object.entries({ ...data.query, page: value })).toString()
-    router.push(`http://localhost:3000/courses?${params}`)
+    router.push(`http://localhost:3000/enrollments?${params}`)
   }
 
   return (
     <Box className={styles.parentBox}>
-      <Search enrollment={false} />
+      <Search enrollment={true} />
       <Grid
         container spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 12, sm: 16, md: 20 }}
@@ -36,7 +37,7 @@ export default function Courses({ data }) {
           width: '50%'
         }}
       >
-        {
+       {
           data.courses && data.courses.map((course, index) => (
             <Grid
             component="div"
@@ -78,10 +79,10 @@ export default function Courses({ data }) {
 
                   <CardActions className={styles.cardFoot} >
                     <IconButton
-                      // onClick={() => addEnrollment(course.id, user.dbid)}
-                      className={styles.heartButton}
+                      // onClick={() => updateEnrollment(course.id)}
+                      className={styles.queueButton}
                       aria-label="add to favorites">
-                      <FavoriteIcon />
+                      <SkipNextIcon />
                     </IconButton>
                   </CardActions>
 
@@ -103,5 +104,3 @@ export default function Courses({ data }) {
     </Box>
   )
 }
-
-

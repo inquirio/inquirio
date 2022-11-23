@@ -6,7 +6,7 @@ import Category from '../Components/Category/category';
 import Link from 'next/link';
 import Head from 'next/head';
 import Image from 'next/image';
-import Login from '../Components/Login/login';
+
 
 export default function Settings() {
 
@@ -24,7 +24,7 @@ export default function Settings() {
           <Link className={styles.linkHome} href="/">Home</Link> &nbsp;&nbsp;&nbsp;<Link className={styles.linkSettings} href="/settings">Settings</Link>
           <Link className={styles.courses} href="/courses">Courses</Link>
           <Link className={styles.linkHome} href="/about-us">About-Us</Link> 
-          <Login className={styles.header} />
+          
         </Toolbar>
 
         <h1 className={styles.setTitle}>Inquirio User Settings</h1>
