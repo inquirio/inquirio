@@ -17,11 +17,27 @@ export const getServerSideProps = withPageAuthRequired({
   }
 })
 
-export default function Enrollments({ data }) {
+export default withPageAuthRequired(function Enrollments({ data }) {
   const router = useRouter();
   const setPage = value => {
     const params = new URLSearchParams(Object.entries({ ...data.query, page: value })).toString()
     router.push(`http://localhost:3000/enrollments?${params}`)
+  }
+  const updateStatus = async (id, status) => {
+    const res = await fetch('/api/enrollment', {
+      method: 'PUT',
+      body: JSON.stringify({
+        id,
+        status
+      })
+    })
+  }
+  
+  const removeEnrollment = async (id) => {
+    const res = await fetch('/api/enrollment', {
+      method: 'DELETE',
+      body: JSON.stringify({ id })
+    })
   }
 
   return (
@@ -99,4 +115,4 @@ export default function Enrollments({ data }) {
       </Grid>
     </Box>
   )
-}
+})
