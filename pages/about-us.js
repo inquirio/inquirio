@@ -58,7 +58,7 @@ export default function Home() {
             <Image
               src='/Daniel.jpg' alt='gene' width={250} height={250} />
             <p>
-              Find in-depth information about Next.js features and API.Find in-depth information about Next.js features and API.Find in-depth information about Next.js features and API
+            Daniel graduated from Iowa State University in 2013 with a degree in materials engineering and a minor in music. He has worked a wide variety of jobs, from retail sales to warehouse work to church ministry. He frequently finds himself chasing rabbit trails of knowledge, learning a little bit about a wide variety of topics. One such excursion down the rabbit trail of logic and design led him to computer programming, where he is now pursuing a career in software development as a student at Delta V and Code Fellows.
             </p>
           </a>
 
