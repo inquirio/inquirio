@@ -30,7 +30,7 @@ export default function Home() {
           ? <p className={styles.description}>Welcome {user.name}!</p> :
           <p className={styles.description}>
             First time? Start learning by signing up to gain access!
-          </p>
+          </p>}
        
         
         <Search enrollment={false}/>
