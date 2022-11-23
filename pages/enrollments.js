@@ -3,7 +3,7 @@ import SkipNextIcon from '@mui/icons-material/SkipNext';
 import { useRouter } from 'next/router';
 import Search from '../Components/Search/Search';
 import styles from '../styles/Courses.module.css';
-// import { getEnrollment} from '../lib/enrollment';
+import { getEnrollment} from '../lib/enrollment';
 import { getSession, withPageAuthRequired } from '@auth0/nextjs-auth0';
 
 
