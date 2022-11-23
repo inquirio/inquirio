@@ -1,7 +1,6 @@
 import { FormGroup, TextField, Button } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import styles from '../../styles/Courses.module.css';
 import SearchIcon from '@mui/icons-material/Search';
 
 const Search = ({ enrollment }) => {
@@ -22,11 +21,17 @@ const Search = ({ enrollment }) => {
   }
 
   return (
-    <FormGroup className={styles.searchForm}>
+    <FormGroup
+      sx={{
+        mb: '3.5vh',
+        display: 'inline-flex',
+        width: '50%',
+        justifyContent: 'center'
+      }}>
       <TextField
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        sx={{ m: 1, width: '25ch' }}
+        sx={{ m: 1 }}
         id="filled-search"
         label="By Course"
         type="search"
@@ -34,7 +39,7 @@ const Search = ({ enrollment }) => {
       <TextField
         value={category}
         onChange={(e) => setCategory(e.target.value)}
-        sx={{ m: 1, width: '25ch' }}
+        sx={{ m: 1 }}
         id="filled-search"
         label="By Category"
         type="search"
@@ -42,14 +47,14 @@ const Search = ({ enrollment }) => {
       <TextField
         value={provider}
         onChange={(e) => setProvider(e.target.value)}
-        sx={{ m: 1, width: '25ch' }}
+        sx={{ m: 1 }}
         id="filled-search"
         label="By Provider"
         type="search"
         variant="filled" />
-      <Button 
-      onClick={newSearch}
-      startIcon={<SearchIcon />}
+      <Button
+        onClick={newSearch}
+        startIcon={<SearchIcon />}
       >Search</Button>
     </FormGroup>
   )

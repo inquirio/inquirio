@@ -11,7 +11,7 @@ import { useUser } from '@auth0/nextjs-auth0';
 export default function Home() {
 
   const { user, error, isLoading } = useUser();
- 
+
   return (
     <Box className={styles.container}>
       <Head>
@@ -20,20 +20,22 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      {user
+        ? <Navbar />
+        : <Login />}
+
       <main className={styles.main}>
 
-       {user
-       ? <Navbar />
-       : <Login />}
+        <h1 className={styles.title}>Inquirio</h1>
+        <h2 className={styles.h2}>Take Control of Your Career</h2>
 
-        <h1 className={styles.title}>Take Control of Your Career With Inquirio</h1>
-        <Category />
+        {user
+          ? <p className={styles.description}>Welcome {user.name}!</p> :
+          <p className={styles.description}>
+            First time? Start learning by signing up to gain access!
+          </p>
+        }
 
-        <p className={styles.description}>
-          Start learning by clicking the {' '}
-          <code className={styles.code}>Log In</code>
-          . First time? Sign up to gain access!
-        </p>
 
         <div className={styles.grid}>
           <Card className={styles.card}>
