@@ -16,7 +16,7 @@ import { useUser } from '@auth0/nextjs-auth0';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const pages = ['Home', 'Courses'];
+const pages = ['Home', 'Courses', 'ABOUT-us'];
 const settings = ['Profile', 'Logout'];
 
 function ResponsiveAppBar() {
@@ -100,12 +100,20 @@ function ResponsiveAppBar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                  
+              
+                <MenuItem  href="/" onClick={handleCloseNavMenu}>
+                <Link href="/" >Home</Link>
+
                 </MenuItem>
-              ))}
+                <MenuItem  onClick={handleCloseNavMenu}>
+                <Link href="/courses" >Courses</Link>
+                
+                </MenuItem>
+                <MenuItem  href="/about-us" onClick={handleCloseNavMenu}>
+                <Link href="/about-us" >About US</Link>
+
+                </MenuItem>
+              
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -137,14 +145,7 @@ function ResponsiveAppBar() {
               >
                 HOME
               </Button>
-              <Button
-                
-                href="/courses"
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                  COURSES
-                </Button>
+              
                 <Button
                 
                 href="/about-us"
@@ -181,6 +182,7 @@ function ResponsiveAppBar() {
               
                 <MenuItem  onClick={handleCloseUserMenu}>
                   <Typography textAlign="center">Profile</Typography>
+                  <Link href="/enrollments" icon="power-off"  >My Courses</Link>
                 </MenuItem>
                 <MenuItem  onClick={handleCloseUserMenu}>
                 <Link href="/api/auth/logout" icon="power-off"  >Logout</Link>

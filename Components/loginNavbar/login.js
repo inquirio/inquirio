@@ -65,8 +65,7 @@ function ResponsiveAppBar() {
             }}
           >
 
-            <Image
-              src='/logo6.png' alt='Logo' width={70} height={70} />
+          
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -98,15 +97,22 @@ function ResponsiveAppBar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+              
+                <MenuItem  href="/" onClick={handleCloseNavMenu}>
+                <Link href="/" >Home</Link>
 
                 </MenuItem>
-              ))}
+                <MenuItem  href="/courses" onClick={handleCloseNavMenu}>
+                <Link href="/courses" >Courses</Link>
+                
+                </MenuItem>
+                <MenuItem  href="/about-us" onClick={handleCloseNavMenu}>
+                <Link href="/about-us" >About US</Link>
+
+                </MenuItem>
+              
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -123,7 +129,8 @@ function ResponsiveAppBar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            <Image
+              src='/logo6.png' alt='Logo' width={70} height={70} />
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 
@@ -143,6 +150,14 @@ function ResponsiveAppBar() {
             >
               COURSES
             </Button>
+            <Button
+                
+                href="/about-us"
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                ABOUT US
+              </Button>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
