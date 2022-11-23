@@ -2,26 +2,30 @@ import { Box, Card, CardActions, CardActionArea, CardContent, CardMedia, Grid, I
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import SearchIcon from '@mui/icons-material/Search';
 import { useRouter } from 'next/router';
-import getCourses from '../lib/courses';
 import Search from '../Components/Search/Search';
 import styles from '../styles/Courses.module.css';
+import { getEnrollment } from '../lib/enrollment';
+import { getSession, withPageAuthRequired } from '@auth0/nextjs-auth0';
 
-export async function getServerSideProps({ query }) {
-  let data = await getCourses(query)
-  data.query = query
-  return { props: { data } }
-}
+export const getServerSideProps = withPageAuthRequired({
+  async getServerSideProps(ctx) {
+    const { user } = getSession(ctx.req, ctx.res)
+    let data = await getEnrollment({ ...ctx.query, userId: user.dbid })
+    data.query = ctx.query
+    return { props: { data } }
+  }
+})
 
-export default function Courses({ data }) {
+export default function Enrollments({ data }) {
   const router = useRouter();
   const setPage = value => {
     const params = new URLSearchParams(Object.entries({ ...data.query, page: value })).toString()
-    router.push(`http://localhost:3000/courses?${params}`)
+    router.push(`http://localhost:3000/enrollments?${params}`)
   }
 
   return (
     <Box className={styles.parentBox}>
-      <Search enrollment={false} />
+      <Search enrollment={true} />
       <Grid
         container spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 12, sm: 16, md: 20 }}
@@ -33,7 +37,7 @@ export default function Courses({ data }) {
         }}
       >
         {
-          data.courses && data.courses.map((course, index) => (
+          data.courses && data.courses.map((enrollment, index) => (
             <Grid
               key={`course-${index}`}
               component="div"
@@ -45,25 +49,25 @@ export default function Courses({ data }) {
                   height: '35vh',
                 }}
               >
-                <CardActionArea href={course.url} >
+                <CardActionArea href={enrollment.Course.url} >
                   <CardMedia
                     className={styles.cardImg}
                     component="img"
-                    image={course.image}
-                    alt={course.name}
+                    image={enrollment.Course.image}
+                    alt={enrollment.Course.name}
                   />
                   <CardContent className={styles.cardBody}>
                     <Typography
                       className={styles.cardHeader}
                       component="div">
-                      {course.name}
+                      {enrollment.Course.name}
                     </Typography>
                     <Typography
                       className={styles.cardText}
                       variant="body2"
                       color="text.secondary"
                     >
-                      {course.provider}
+                      {enrollment.Course.provider}
                     </Typography>
                   </CardContent>
 
@@ -84,7 +88,7 @@ export default function Courses({ data }) {
           <Pagination
             onChange={(e, value) => setPage(value)}
             page={parseInt(data.query.page)}
-            count={data.totalPages}
+            count={parseInt(data.totalPages)}
             className={styles.Pagination}
             size="large"
             color="primary"
@@ -95,5 +99,3 @@ export default function Courses({ data }) {
     </Box>
   )
 }
-
-
