@@ -5,7 +5,8 @@ import getCourses from '../lib/courses';
 import Search from '../Components/Search/Search';
 import styles from '../styles/Courses.module.css';
 import ExitToAppSharpIcon from '@mui/icons-material/ExitToAppSharp';
-// import addEnrollment from '../lib/enrollment';
+// import { addEnrollment } from '../lib/enrollment';
+import { useUser } from '@auth0/nextjs-auth0';
 
 export async function getServerSideProps({ query }) {
   let data = await getCourses(query)
@@ -14,6 +15,7 @@ export async function getServerSideProps({ query }) {
 }
 
 export default function Courses({ data }) {
+  const {user} = useUser();
   const router = useRouter();
   const setPage = value => {
     const params = new URLSearchParams(Object.entries({ ...data.query, page: value })).toString()
@@ -75,7 +77,7 @@ export default function Courses({ data }) {
 
                   <CardActions className={styles.cardFoot} >
                     <IconButton
-                      onClick={() => addEnrollment(course.id)}
+                      // onClick={() => addEnrollment(course.id, user.dbid)}
                       className={styles.heartButton}
                       aria-label="add to favorites">
                       <FavoriteIcon />
