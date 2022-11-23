@@ -12,6 +12,7 @@ export const getServerSideProps = withPageAuthRequired({
     const { user } = getSession(ctx.req, ctx.res)
     let data = await getEnrollment({ ...ctx.query, userId: user.dbid })
     data.query = ctx.query
+    if (!data.query.page) data.query.page = 1
     return { props: { data } }
   }
 })
