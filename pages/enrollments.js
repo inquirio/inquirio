@@ -31,7 +31,7 @@ export default withPageAuthRequired(function Enrollments({ data }) {
   const router = useRouter();
   const setPage = value => {
     const params = new URLSearchParams(Object.entries({ ...data.query, page: value })).toString()
-    router.push(`${nextConfig.host}/enrollments?${params}`)
+    router.push(`${nextConfig.env.host}/enrollments?${params}`)
   }
   const updateStatus = async (id, status) => {
     console.log(id, status);
@@ -133,6 +133,7 @@ export default withPageAuthRequired(function Enrollments({ data }) {
                 </Card>
               </Grid>
             ))}
+            </Grid>
           {data.totalPages &&
             <Pagination
               onChange={(e, value) => setPage(value)}
@@ -144,7 +145,6 @@ export default withPageAuthRequired(function Enrollments({ data }) {
               variant="outlined"
               shape="rounded"
             />}
-        </Grid>
       </Box>
     </>
   )

@@ -8,9 +8,8 @@ import Transition from '../Components/Transition/transition';
 
 export default function App({ Component, pageProps }) {
 
-
   return (
-    <UserProvider >
+    <UserProvider>
       <Transition>
         <Component {...pageProps} />
       </Transition>

@@ -1,6 +1,6 @@
 .container {
   padding: 0 2rem;
-  background: #99d699 
+  background: #dbecf1;
 }
 
 .main {
@@ -11,15 +11,19 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
+
 
 .footer {
   display: flex;
   flex: 1;
   padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
+  border-top: 1px solid #000000;
   justify-content: center;
   align-items: center;
+  
 }
 
 .footer a {
@@ -101,6 +105,8 @@
   justify-content: stretch;
   flex-wrap: wrap;
   max-width: 1000px;
+  /* flex-direction: row; */
+  
 }
 
 .card {
@@ -113,7 +119,8 @@
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  max-width: 300px;
+  max-width: 250px;
+  max-height: 600px;
 }
 
 .card:hover,

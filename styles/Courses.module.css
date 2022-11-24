@@ -9,6 +9,7 @@
   padding: 5%;
   padding-left: 12%;
   padding-right: 12%;
+  background: #dbecf1;
 }
 
 /* .searchForm {
@@ -136,3 +137,5 @@ color: rgb(28, 155, 206);
 .Pagination {
   margin: 2vw;
 }
+
+
